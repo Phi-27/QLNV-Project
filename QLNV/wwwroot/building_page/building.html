@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý nhân viên - Speed POS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="flex">
+        <!-- Main content -->
+        <main class="flex-1 p-6">
+            <!-- Header -->
+            <div class="bg-white rounded-xl shadow header">
+                <div class="flex items-center justify-between px-6 py-4">
+                    <img src="/images/Logo-SpeedPos.webp" alt="Speed POS" class="h-8">
+                    <!-- Tìm kiếm -->
+                    <input type="text" placeholder="🔍 Tìm kiếm..." class="w-1/2 px-4 py-2 border rounded-full shadow-sm" id="search-input">
+                    <!-- Thông tin người dùng -->
+                    <div class="relative group cursor-pointer">
+                        <div class="flex items-center space-x-3">
+                            <img src="/images/images.jpeg" alt="Ảnh admin" class="w-12 h-12 rounded-full object-cover" />
+                            <div class="text-sm">
+                                <div class="font-semibold" id="user-name">Tên admin</div>
+                                <div class="text-gray-500 text-xs" id="user-email">mail admin</div>
+                            </div>
+                        </div>
+                        <!-- Dropdown menu -->
+                        <div class="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition duration-200 z-50">
+                            <a href="/admin_page/admin.html" class="text-center block px-4 py-2 hover:bg-gray-100 text-sm">Xem hồ sơ</a>
+                            <a href="/admin_page/doimatkhau.html" class="text-center block px-4 py-2 hover:bg-gray-100 text-sm">Đổi mật khẩu</a>
+                            <a href="#" onclick="logout()" class="block px-4 py-2 hover:bg-gray-100 text-sm text-center">Đăng xuất</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content with Sidebar and Employee Cards -->
+            <div class="flex mt-6">
+                <!-- Sidebar -->
+                <aside class="w-64 bg-white rounded shadow sidebar">
+                    <nav class="px-4 py-2 space-y-2">
+                        <a href="/home_page/index.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                            <i class="lucide-home"></i> <span>Trang chủ</span>
+                        </a>
+                        <a href="/staff_page/staff.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                            <i class="lucide-users"></i> <span>Nhân viên</span>
+                        </a>
+                        <a href="/building_page/building.html" class="flex items-center space-x-2 text-white bg-blue-600 py-2 rounded">
+                            <i class="lucide-building"></i> <span>Toà nhà</span>
+                        </a>
+                        <a href="/access_point_page/access_point.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                            <i class="lucide-map-pin"></i> <span>Access Point</span>
+                        </a>
+                        <a href="/access_history_page/access_history.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                            <i class="lucide-history"></i> <span>Lịch sử truy cập</span>
+                        </a>
+                    </nav>
+                </aside>
+
+                <!-- Employee Table -->
+                <div class="flex-1">
+                    <div class="bg-white rounded-lg shadow p-4">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm text-left text-gray-700" id="site-table">
+                                <thead class="bg-gray-50 text-xs uppercase">
+                                    <tr>
+                                        <th class="px-4 py-2">Mã cửa hàng</th>
+                                        <th class="px-4 py-2">Tên cửa hàng</th>
+                                        <th class="px-4 py-2">Địa chỉ</th>
+                                        <th class="px-4 py-2">Trạng thái</th>
+                                        <th class="px-4 py-2">Hành động</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="site-table-body">
+                                    <!-- Data will be populated here via JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Script to load and manage site data -->
+    <script>
+        lucide.createIcons();
+
+        document.addEventListener("DOMContentLoaded", async () => {
+            const searchInput = document.getElementById("search-input");
+            const tableBody = document.getElementById("site-table-body");
+            const userNameElement = document.querySelector("#user-name");
+            const userEmailElement = document.querySelector("#user-email");
+
+            // Fetch user info
+            async function fetchUserInfo() {
+                try {
+                    const response = await fetch('http://localhost:33135/api/Auth/user', {
+                        credentials: 'include',
+                        signal: AbortSignal.timeout(5000) // Timeout 5 seconds
+                    });
+                    if (!response.ok) {
+                        throw new Error("Không thể xác thực: " + response.status);
+                    }
+                    const user = await response.json();
+                    const role = user.role?.toString().trim();
+                    if (role !== "admin") {
+                        alert("Bạn không có quyền truy cập trang này.");
+                        window.location.href = '/nhanvien_page/home.html';
+                        return false;
+                    }
+                    userNameElement.textContent = user.name || "Tên admin";
+                    userEmailElement.textContent = user.email || "mail admin";
+                    return true;
+                } catch (error) {
+                    console.error('Error fetching user info:', error);
+                    alert('Lỗi xác thực: ' + error.message);
+                    window.location.href = '/login_page/login.html';
+                    return false;
+                }
+            }
+
+            async function fetchSites() {
+                try {
+                    const response = await fetch('http://localhost:33135/api/Site', {
+                        method: 'GET',
+                        headers: {
+                            'Accept': 'application/json'
+                        },
+                        credentials: 'include' // Include session cookies
+                    });
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}, Message: ${await response.text()}`);
+                    }
+                    const sites = await response.json();
+                    console.log("Fetched sites:", sites);
+                    renderSites(sites);
+                    return sites; // Return sites for filtering
+                } catch (error) {
+                    console.error("Fetch error details:", error);
+                    alert("Không thể tải danh sách cửa hàng: " + error.message);
+                    tableBody.innerHTML = '<tr><td colspan="5">Không tải được dữ liệu.</td></tr>';
+                    return [];
+                }
+            }
+
+            function renderSites(sites) {
+                tableBody.innerHTML = '';
+                if (!sites || !sites.length) {
+                    tableBody.innerHTML = '<tr><td colspan="5">Không có dữ liệu.</td></tr>';
+                    return;
+                }
+                sites.forEach(site => {
+                    let status = "Bảo trì";
+                    let statusColor = "text-yellow-600";
+                    if (site.isActive === true) {
+                        status = "Hoạt động";
+                        statusColor = "text-green-600";
+                    } else if (site.isActive === false) {
+                        status = "Ngừng hoạt động";
+                        statusColor = "text-red-600";
+                    }
+
+                    const row = document.createElement("tr");
+                    row.classList.add("border-b", "hover:bg-gray-100");
+                    row.innerHTML = `
+                                <td class="px-4 py-2">${site.siteId || 'N/A'}</td>
+                                <td class="px-4 py-2">${site.siteName || 'Chưa có tên'}</td>
+                                <td class="px-4 py-2">${site.address || 'Chưa có địa chỉ'}</td>
+                                <td class="px-4 py-2 ${statusColor}">${status}</td>
+                                <td class="px-4 py-2">
+                                    <div class="flex items-center space-x-4">
+                                        <a href="/building_detail_page/building_detail.html?id=${site.siteId}" class="text-blue-600 hover:underline flex items-center space-x-1">
+                                            <i data-lucide="eye" class="w-4 h-4"></i>
+                                            <span>Xem chi tiết</span>
+                                        </a>
+                                        <button class="text-red-600 hover:underline flex items-center space-x-1 delete-btn" data-id="${site.siteId}">
+                                            <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                            <span>Xoá</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            `;
+                    tableBody.appendChild(row);
+                });
+                lucide.createIcons(); // Reinitialize icons after adding rows
+            }
+
+            tableBody.addEventListener("click", (e) => {
+                if (e.target.closest(".delete-btn")) {
+                    const button = e.target.closest(".delete-btn");
+                    const siteId = button.getAttribute("data-id");
+                    const row = button.closest("tr");
+                    const siteName = row.querySelector("td:nth-child(2)").textContent.trim();
+
+                    if (confirm(`Bạn có chắc chắn muốn xoá khu vực "${siteName}"?`)) {
+                        deleteSite(siteId, row);
+                    }
+                }
+            });
+
+            async function deleteSite(siteId, row) {
+                try {
+                    const response = await fetch(`http://localhost:33135/api/Site/${siteId}`, {
+                        method: "DELETE",
+                        credentials: 'include' // Include session cookies
+                    });
+                    if (!response.ok) throw new Error(await response.text());
+                    row.remove();
+                    alert("Xóa thành công!");
+                } catch (error) {
+                    console.error("Error deleting site:", error);
+                    alert("Lỗi khi xóa: " + error.message);
+                }
+            }
+
+            searchInput.addEventListener("input", async () => {
+                const keyword = searchInput.value.toLowerCase();
+                const sites = await fetchSites();
+                const filteredSites = sites.filter(site =>
+                    (site.siteName?.toLowerCase().includes(keyword) || false) ||
+                    (site.address?.toLowerCase().includes(keyword) || false)
+                );
+                renderSites(filteredSites);
+            });
+
+            // Logout function
+            window.logout = async () => {
+                try {
+                    await fetch('http://localhost:33135/api/Auth/logout', {
+                        method: 'POST',
+                        credentials: 'include'
+                    });
+                    window.location.href = '/login_page/login.html';
+                } catch (error) {
+                    console.error('Error logging out:', error);
+                    window.location.href = '/login_page/login.html';
+                }
+            };
+
+            // Initialize
+            const isAuthenticated = await fetchUserInfo();
+            if (isAuthenticated) {
+                await fetchSites();
+            }
+        });
+    </script>
+</body>
+</html>

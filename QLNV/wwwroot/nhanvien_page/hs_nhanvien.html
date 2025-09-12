@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhân viên - Speed POS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="flex">
+        <main class="flex-1 p-6">
+            <!-- Header -->
+            <div class="bg-white rounded-xl shadow header">
+                <div class="flex items-center justify-between px-6 py-4">
+                    <img src="/images/Logo-SpeedPos.webp" alt="Speed POS" class="h-8">
+                    <input type="text" placeholder="🔍 Tìm kiếm..." class="w-1/2 px-4 py-2 border rounded-full shadow-sm">
+
+                    <div class="relative group cursor-pointer">
+                        <div class="flex items-center space-x-3">
+                            <img src="/images/images.jpeg" alt="Ảnh nhân viên" class="w-12 h-12 rounded-full object-cover" />
+                            <div class="text-sm">
+                                <div class="font-semibold" id="user-name">Tên nhân viên</div>
+                                <div class="text-gray-500 text-xs" id="user-email">mail nhân viên</div>
+                            </div>
+                        </div>
+
+                        <!-- Dropdown menu -->
+                        <div class="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition duration-200 z-50">
+                            <a href="/nhanvien_page/hs_nhanvien.html" class="text-center block px-4 py-2 hover:bg-gray-100 text-sm font-medium text-blue-600">Xem hồ sơ</a>
+                            <a href="/nhanvien_page/doimatkkhau.html" class="text-center block px-4 py-2 hover:bg-gray-100 text-sm">Đổi mật khẩu</a>
+                            <a href="#" onclick="logout()" class="text-center block px-4 py-2 hover:bg-gray-100 text-sm">Đăng xuất</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-4xl mx-auto p-6">
+                <header class="flex items-center justify-between mb-8">
+                    <a href="/nhanvien_page/home.html" class="text-blue-600 hover:underline">← Quay về Trang chủ</a>
+                </header>
+
+                <div class="bg-white rounded-xl shadow p-8">
+                    <h1 class="text-3xl font-semibold mb-6">Hồ sơ cá nhân</h1>
+
+                    <div class="flex items-center space-x-8 mb-8">
+                        <img src="/images/images.jpeg" alt="Ảnh đại diện" class="w-32 h-32 rounded-full object-cover border-4 border-blue-600" />
+                        <div>
+                            <h2 id="profile-name" class="text-2xl font-bold">Tên Nhân viên</h2>
+                            <p id="profile-email" class="text-gray-600 mt-1">nhân viên@example.com</p>
+                            <p id="profile-department" class="text-gray-500 mt-2">Nhân viên kỹ thuật</p>
+                        </div>
+                    </div>
+
+                    <!-- QR Code Section -->
+                    <div class="mb-8">
+                        <h3 class="text-lg font-semibold mb-2">Mã QR của bạn</h3>
+                        <img id="qrCodeImage" src="" alt="Mã QR" class="w-48 h-48" />
+                        <p class="text-gray-600 mt-2"><strong>Mã thành viên:</strong> <span id="memberCard">Chưa có mã</span></p>
+                    </div>
+
+                    <!-- Thông tin tĩnh -->
+                    <div id="profileView" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">Thông tin cá nhân</h3>
+                            <ul class="text-gray-700 space-y-1">
+                                <li><strong>Họ và tên:</strong> <span id="fullName">Nguyễn Văn A</span></li>
+                                <li><strong>Ngày sinh:</strong> <span id="birthDate">10/05/2000</span></li>
+                                <li><strong>Email:</strong> <span id="email">nhanvien@example.com</span></li>
+                                <li><strong>Số điện thoại:</strong> <span id="phone">0123 456 789</span></li>
+                                <li><strong>Địa chỉ:</strong> <span id="address">123 Đường ABC, Quận 1, TP.HCM</span></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">Thông tin công việc</h3>
+                            <ul class="text-gray-700 space-y-1">
+                                <li><strong>Chức vụ:</strong> <span id="role">Quản trị viên hệ thống</span></li>
+                                <li><strong>Phòng ban:</strong> <span id="department">IT</span></li>
+                                <li><strong>Ngày vào làm:</strong> <span id="createdDate">01/01/2020</span></li>
+                                <li><strong>Trạng thái:</strong> <span id="status">Đang làm việc</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Nút chỉnh sửa -->
+                    <div class="mt-8 space-x-4">
+                        <button id="editBtn" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+                            Chỉnh sửa hồ sơ
+                        </button>
+                    </div>
+
+                    <!-- Form chỉnh sửa -->
+                    <div id="editForm" class="hidden mt-8">
+                        <form id="profileEditForm" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium">Họ và tên</label>
+                                    <input type="text" id="editFullName" class="mt-1 w-full border rounded px-4 py-2" />
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium">Ngày sinh</label>
+                                    <input type="text" id="editBirthDate" class="mt-1 w-full border rounded px-4 py-2" />
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium">Email</label>
+                                    <input type="email" id="editEmail" class="mt-1 w-full border rounded px-4 py-2" disabled />
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium">Số điện thoại</label>
+                                    <input type="text" id="editPhone" class="mt-1 w-full border rounded px-4 py-2" />
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium">Địa chỉ</label>
+                                    <input type="text" id="editAddress" class="mt-1 w-full border rounded px-4 py-2" />
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium">Chức vụ</label>
+                                    <input type="text" id="editRole" class="mt-1 w-full border rounded px-4 py-2" disabled />
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium">Phòng ban</label>
+                                    <input type="text" id="editDepartment" class="mt-1 w-full border rounded px-4 py-2" disabled />
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium">Ngày vào làm</label>
+                                    <input type="date" id="editCreatedDate" class="mt-1 w-full border rounded px-4 py-2" disabled />
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium">Trạng thái</label>
+                                    <select id="editStatus" class="mt-1 w-full border rounded px-4 py-2" disabled>
+                                        <option>Đang làm việc</option>
+                                        <option>Nghỉ phép</option>
+                                        <option>Đã nghỉ việc</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="pt-4 space-x-4">
+                                <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 transition">Lưu thay đổi</button>
+                                <button type="button" id="cancelEdit" class="bg-gray-400 text-white px-6 py-2 rounded hover:bg-gray-500 transition">Hủy</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            const userNameElement = document.querySelector("#user-name");
+            const userEmailElement = document.querySelector("#user-email");
+            const profileNameElement = document.querySelector("#profile-name");
+            const profileEmailElement = document.querySelector("#profile-email");
+            const profileDepartmentElement = document.querySelector("#profile-department");
+            const qrCodeImageElement = document.querySelector("#qrCodeImage");
+            const memberCardElement = document.querySelector("#memberCard");
+            const fullNameElement = document.querySelector("#fullName");
+            const birthDateElement = document.querySelector("#birthDate");
+            const emailElement = document.querySelector("#email");
+            const phoneElement = document.querySelector("#phone");
+            const addressElement = document.querySelector("#address");
+            const roleElement = document.querySelector("#role");
+            const departmentElement = document.querySelector("#department");
+            const createdDateElement = document.querySelector("#createdDate");
+            const statusElement = document.querySelector("#status");
+
+            const editFullName = document.querySelector("#editFullName");
+            const editBirthDate = document.querySelector("#editBirthDate");
+            const editEmail = document.querySelector("#editEmail");
+            const editPhone = document.querySelector("#editPhone");
+            const editAddress = document.querySelector("#editAddress");
+            const editRole = document.querySelector("#editRole");
+            const editDepartment = document.querySelector("#editDepartment");
+            const editCreatedDate = document.querySelector("#editCreatedDate");
+            const editStatus = document.querySelector("#editStatus");
+
+            async function fetchUserInfo() {
+                try {
+                    const response = await fetch('/api/Auth/user');
+                    if (!response.ok) {
+                        window.location.href = '/login_page/login.html';
+                        return;
+                    }
+                    const user = await response.json();
+
+                    const role = user.role?.toString().trim();
+                    console.log("Role từ API (hs_nhanvien.html):", role);
+
+                    // Kiểm tra phân quyền
+                    if (role === "admin") {
+                        window.location.href = '/home_page/index.html';
+                        return false;
+                    }
+
+                    // Populate user info
+                    userNameElement.textContent = user.name;
+                    userEmailElement.textContent = user.email;
+                    profileNameElement.textContent = user.name;
+                    profileEmailElement.textContent = user.email;
+                    profileDepartmentElement.textContent = user.department || "Chưa có phòng ban";
+
+                    // Populate QR code and MemberCard
+                    if (user.qrCodeImage) {
+                        qrCodeImageElement.src = user.qrCodeImage;
+                    } else {
+                        qrCodeImageElement.alt = "Không có mã QR";
+                        qrCodeImageElement.src = "/images/placeholder-qr.png"; // Placeholder if no QR code
+                    }
+                    memberCardElement.textContent = user.memberCard || "Chưa có mã thành viên";
+
+                    // Populate profile details
+                    fullNameElement.textContent = user.name || "Chưa có thông tin";
+                    birthDateElement.textContent = user.birthDate || "Chưa có thông tin";
+                    emailElement.textContent = user.email || "Chưa có thông tin";
+                    phoneElement.textContent = user.phone || "Chưa có thông tin";
+                    addressElement.textContent = user.address || "Chưa có thông tin";
+                    roleElement.textContent = user.role || "Nhân viên";
+                    departmentElement.textContent = user.department || "Chưa có thông tin";
+                    createdDateElement.textContent = user.createdDate || "Chưa có thông tin";
+                    statusElement.textContent = user.isActive || "Chưa có thông tin";
+
+                    // Populate edit form
+                    editFullName.value = user.name || "";
+                    editBirthDate.value = user.birthDate || "";
+                    editEmail.value = user.email || "";
+                    editPhone.value = user.phone || "";
+                    editAddress.value = user.address || "";
+                    editRole.value = user.role || "Nhân viên";
+                    editDepartment.value = user.department || "";
+                    editCreatedDate.value = user.createdDate ? user.createdDate.split("/").reverse().join("-") : "";
+                    editStatus.value = user.isActive || "Đang làm việc";
+
+                    return true;
+                } catch (error) {
+                    console.error('Error fetching user info:', error);
+                    window.location.href = '/login_page/login.html';
+                    return false;
+                }
+            }
+
+            async function logout() {
+                try {
+                    await fetch('/api/Auth/logout', { method: 'POST' });
+                    window.location.href = '/login_page/login.html';
+                } catch (error) {
+                    console.error('Error logging out:', error);
+                    window.location.href = '/login_page/login.html';
+                }
+            }
+
+            // Initialize page
+            await fetchUserInfo();
+
+            // Handle search (if needed)
+            const searchInput = document.querySelector("input[type='text']");
+            const cards = document.querySelectorAll(".employee-card");
+
+            if (searchInput) {
+                searchInput.addEventListener("input", function () {
+                    const keyword = this.value.toLowerCase();
+                    cards.forEach(card => {
+                        const name = card.querySelector(".employee-name")?.textContent.toLowerCase();
+                        card.classList.toggle("hidden", !name?.includes(keyword));
+                    });
+                });
+            }
+
+            // Handle edit form
+            const editBtn = document.getElementById("editBtn");
+            const cancelBtn = document.getElementById("cancelEdit");
+            const editForm = document.getElementById("editForm");
+            const profileView = document.getElementById("profileView");
+
+            editBtn?.addEventListener("click", () => {
+                editForm.classList.remove("hidden");
+                profileView.classList.add("hidden");
+                editBtn.classList.add("hidden");
+            });
+
+            cancelBtn?.addEventListener("click", () => {
+                editForm.classList.add("hidden");
+                profileView.classList.remove("hidden");
+                editBtn.classList.remove("hidden");
+            });
+
+            const form = document.getElementById("profileEditForm");
+            form?.addEventListener("submit", async (e) => {
+                e.preventDefault();
+                // Simulate saving changes (you can add an API call to update the profile here)
+                alert("Thông tin đã được lưu (giả lập).");
+                cancelBtn.click();
+            });
+
+            window.logout = logout;
+        });
+    </script>
+</body>
+</html>

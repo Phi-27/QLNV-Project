@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Quản lý nhân viên - Speed POS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="flex">
+        <!-- Main content -->
+        <main class="flex-1 p-6">
+            <!-- Header -->
+            <div class="bg-white rounded-xl shadow header">
+                <div class="flex items-center justify-between px-6 py-4">
+                    <img src="/images/Logo-SpeedPos.webp" alt="Speed POS" class="h-8" />
+                    <!-- Tìm kiếm -->
+                    <input type="text" placeholder="🔍 Tìm kiếm..." class="w-1/2 px-4 py-2 border rounded-full shadow-sm" />
+                    <!-- Thông tin người dùng -->
+                    <div class="relative group cursor-pointer">
+                        <div class="flex items-center space-x-3">
+                            <img src="/images/images.jpeg" alt="Ảnh admin" class="w-12 h-12 rounded-full object-cover" id="user-image" />
+                            <div class="text-sm">
+                                <div class="font-semibold" id="user-name">Tên admin</div>
+                                <div class="text-gray-500 text-xs" id="user-email">mail admin</div>
+                            </div>
+                        </div>
+                        <!-- Dropdown menu -->
+                        <div class="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition duration-200 z-50">
+                            <a href="/admin_page/admin.html" class="text-center block px-4 py-2 hover:bg-gray-100 text-sm">Xem hồ sơ</a>
+                            <a href="/admin_page/doimatkhau.html" class="text-center block px-4 py-2 hover:bg-gray-100 text-sm">Đổi mật khẩu</a>
+                            <a href="#" onclick="logout()" class="block px-4 py-2 hover:bg-gray-100 text-sm text-center">Đăng xuất</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content with Sidebar and Employee Details -->
+            <div class="flex mt-6">
+                <!-- Sidebar -->
+                <aside class="w-64 bg-white rounded shadow sidebar">
+                    <nav class="px-4 py-2 space-y-2">
+                        <a href="/home_page/index.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                            <i class="home"></i> <span>Trang chủ</span>
+                        </a>
+                        <a href="/staff_page/staff.html" class="flex items-center space-x-2 text-white bg-blue-600 py-2 rounded">
+                            <i class="users"></i> <span>Nhân viên</span>
+                        </a>
+                        <a href="/building_page/building.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                            <i class="building"></i> <span>Toà nhà</span>
+                        </a>
+                        <a href="/access_point_page/access_point.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                            <i class="map-pin"></i> <span>Access Point</span>
+                        </a>
+                        <a href="/access_history_page/access_history.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                            <i class="history"></i> <span>Lịch sử truy cập</span>
+                        </a>
+                    </nav>
+                </aside>
+
+                <div class="flex-1 gap-4 ml-4">
+                    <!-- Employee Details -->
+                    <div class="bg-gray-700 text-white rounded-lg p-6 mb-6 employee-info" id="employeeInfo">
+                        <div class="flex items-center mb-4">
+                            <button onclick="window.location.href='/staff_page/staff.html'" class="w-12 h-12 rounded-full bg-[#255e7c] flex items-center justify-center hover:bg-[#1e4b63] transition">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                                </svg>
+                            </button>
+                            <h2 class="text-xl font-semibold ml-3">Thông tin nhân viên</h2>
+                        </div>
+
+                        <div class="flex items-center space-x-6">
+                            <img src="/images/anh-mo-ta.jpeg" alt="Ảnh nhân viên" class="w-24 h-24 rounded-full object-cover" id="employeeImage" />
+                            <div>
+                                <h3 class="text-lg font-semibold employee-name mb-2" id="employeeName">Tên nhân viên</h3>
+                                <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm" id="employeeDetails">
+                                    <p><span class="font-medium">Chức vụ:</span> <span id="employeePosition">UI/UX Designer</span></p>
+                                    <p><span class="font-medium">SĐT:</span> <span id="employeePhone">0123456789</span></p>
+                                    <p><span class="font-medium">Email:</span> <span id="employeeEmail">speed@gmail.com</span></p>
+                                    <p><span class="font-medium">Trạng thái:</span> <span id="employeeStatus">Đang làm</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6 text-center">
+                            <div class="bg-gray-600 p-3 rounded">
+                                <p class="text-lg font-bold" id="totalAccess">400</p>
+                                <p class="text-xs">Tổng số lượt ra vào</p>
+                            </div>
+                            <div class="bg-gray-600 p-3 rounded">
+                                <p class="text-lg font-bold" id="avgCheckIn">8:30</p>
+                                <p class="text-xs">Giờ vào trung bình</p>
+                            </div>
+                            <div class="bg-gray-600 p-3 rounded">
+                                <p class="text-lg font-bold" id="avgCheckOut">17:30</p>
+                                <p class="text-xs">Giờ ra trung bình</p>
+                            </div>
+                            <div class="bg-gray-600 p-3 rounded">
+                                <p class="text-lg font-bold" id="employeeRating">Khá</p>
+                                <p class="text-xs">Xếp loại nhân viên</p>
+                            </div>
+                        </div>
+
+                        <div class="space-x-2 mt-4">
+                            <button id="editBtn" class="hover:text-yellow-500">✏️ Sửa</button>
+                            <button id="deleteBtn" class="hover:text-red-500">🗑️ Xoá</button>
+                        </div>
+                    </div>
+
+                    <div id="editFormContainer" class="bg-white rounded-lg p-6 shadow mt-6 hidden">
+                        <h2 class="text-xl font-semibold mb-4">Chỉnh sửa nhân viên</h2>
+                        <form id="editForm">
+                            <div class="mb-4">
+                                <label for="editName" class="block mb-1 font-medium">Tên nhân viên</label>
+                                <input type="text" id="editName" name="name" required class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                            </div>
+                            <div class="mb-4">
+                                <label for="editPosition" class="block mb-1 font-medium">Chức vụ</label>
+                                <input type="text" id="editPosition" name="position" required class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                            </div>
+                            <div class="mb-4">
+                                <label for="editPhone" class="block mb-1 font-medium">Số điện thoại</label>
+                                <input type="tel" id="editPhone" name="phone" pattern="[0-9]{9,15}" required class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                            </div>
+                            <div class="mb-4">
+                                <label for="editEmail" class="block mb-1 font-medium">Email</label>
+                                <input type="email" id="editEmail" name="email" required class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                            </div>
+                            <div class="flex justify-end space-x-3">
+                                <button type="button" id="cancelEditBtn" class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400">Huỷ</button>
+                                <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Lưu thay đổi</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h2 class="text-xl font-semibold">Lịch sử ra vào</h2>
+                            <div class="flex space-x-2">
+                                <button id="sortButton" class="bg-teal-500 text-white p-2 rounded flex items-center space-x-1">
+                                    <i data-lucide="download" class="w-4 h-4"></i>
+                                    <span>Mới nhất</span>
+                                    <i id="sortArrow" data-lucide="chevron-down" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" id="attendanceHistory">
+                            <!-- Attendance items will be dynamically inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const employeeId = urlParams.get('id');
+
+            const employeeInfo = document.getElementById('employeeInfo');
+            const employeeImage = document.getElementById('employeeImage');
+            const employeeName = document.getElementById('employeeName');
+            const employeePosition = document.getElementById('employeePosition');
+            const employeePhone = document.getElementById('employeePhone');
+            const employeeEmail = document.getElementById('employeeEmail');
+            const employeeStatus = document.getElementById('employeeStatus');
+            const totalAccess = document.getElementById('totalAccess');
+            const avgCheckIn = document.getElementById('avgCheckIn');
+            const avgCheckOut = document.getElementById('avgCheckOut');
+            const employeeRating = document.getElementById('employeeRating');
+            const attendanceHistory = document.getElementById('attendanceHistory');
+            const userNameElement = document.getElementById('user-name');
+            const userEmailElement = document.getElementById('user-email');
+
+            // Fetch user info for header
+            async function fetchUserInfo() {
+                try {
+                    const response = await fetch('/api/Auth/user', { credentials: 'include' });
+                    if (!response.ok) {
+                        window.location.href = '/login_page/login.html';
+                        return false;
+                    }
+                    const user = await response.json();
+                    const role = user.role?.toString().trim();
+                    console.log("Role từ API (staff_detail.html):", role);
+
+                    if (role !== "admin") {
+                        window.location.href = '/nhanvien_page/home.html';
+                        return false;
+                    }
+
+                    userNameElement.textContent = user.name;
+                    userEmailElement.textContent = user.email;
+                    return true;
+                } catch (error) {
+                    console.error('Error fetching user info:', error);
+                    window.location.href = '/login_page/login.html';
+                    return false;
+                }
+            }
+
+            async function fetchEmployeeDetails() {
+                try {
+                    const response = await fetch(`/api/Home/${employeeId}`, { credentials: 'include' });
+                    if (!response.ok) throw new Error('Failed to fetch employee details');
+                    const data = await response.json();
+
+                    const employee = data.employee;
+                    const stats = data.stats;
+
+                    // Populate employee details
+                    employeeName.textContent = employee.fullName || 'Không có tên';
+                    employeePosition.textContent = employee.department || 'Không có';
+                    employeePhone.textContent = employee.phone || 'Không có số điện thoại';
+                    employeeEmail.textContent = employee.email || 'Không có email';
+                    employeeStatus.textContent = employee.isActive ? 'Đang làm' : 'Vắng mặt';
+
+                    // Populate statistics
+                    totalAccess.textContent = stats.totalAccess || 0;
+                    avgCheckIn.textContent = stats.avgCheckIn || 'Không có dữ liệu';
+                    avgCheckOut.textContent = stats.avgCheckOut || 'Không có dữ liệu';
+                    employeeRating.textContent = stats.employeeRating || 'Chưa xếp loại';
+                } catch (error) {
+                    console.error('Error fetching employee details:', error);
+                    employeeInfo.innerHTML = '<p class="text-white">Không tìm thấy thông tin nhân viên.</p>';
+                }
+            }
+
+            async function fetchAttendanceHistory() {
+                try {
+                    const response = await fetch(`/api/Home/attendance/${employeeId}`, { credentials: 'include' });
+                    if (!response.ok) throw new Error('Failed to fetch attendance history');
+                    let attendanceData = await response.json();
+
+                    renderAttendanceHistory(attendanceData);
+                } catch (error) {
+                    console.error('Error fetching attendance history:', error);
+                    attendanceHistory.innerHTML = '<p>Không có lịch sử ra vào.</p>';
+                }
+            }
+
+            function renderAttendanceHistory(attendanceData) {
+                attendanceHistory.innerHTML = '';
+                attendanceData.forEach(log => {
+                    let bgColor = 'gray-100';
+                    let textColor = 'gray-700';
+                    if (log.status === 'Trễ giờ') {
+                        bgColor = 'red-100';
+                        textColor = 'red-700';
+                    } else if (log.status === 'Vào làm' || log.status === 'Vào lại' || log.status === 'Tan ca') {
+                        bgColor = 'green-100';
+                        textColor = 'green-700';
+                    } else if (log.status === 'Tăng ca') {
+                        bgColor = 'yellow-100';
+                        textColor = 'yellow-700';
+                    } else if (log.status === 'Vắng mặt') {
+                        bgColor = 'gray-100';
+                        textColor = 'gray-700';
+                    } else if (log.status === 'Ra ngoài') {
+                        bgColor = 'blue-100';
+                        textColor = 'blue-700';
+                    }
+
+                    const card = document.createElement('div');
+                    card.className = `bg-${bgColor} text-${textColor} p-4 rounded`;
+                    card.innerHTML = `
+                            <p class="font-semibold">${log.date}</p>
+                            <p class="text-sm">${log.status}</p>
+                            <p class="text-xs">Check-in: ${log.checkIn || 'Không có dữ liệu'}</p>
+                            <p class="text-xs">Check-out: ${log.checkOut || 'Không có dữ liệu'}</p>
+                        `;
+                    attendanceHistory.appendChild(card);
+                });
+            }
+
+            // Edit functionality
+            document.getElementById('editBtn').addEventListener('click', () => {
+                document.querySelector('.employee-info').style.display = 'none';
+                const formContainer = document.getElementById('editFormContainer');
+                formContainer.classList.remove('hidden');
+
+                document.getElementById('editName').value = employeeName.textContent;
+                document.getElementById('editPosition').value = employeePosition.textContent;
+                document.getElementById('editPhone').value = employeePhone.textContent;
+                document.getElementById('editEmail').value = employeeEmail.textContent;
+            });
+
+            document.getElementById('cancelEditBtn').addEventListener('click', () => {
+                document.getElementById('editFormContainer').classList.add('hidden');
+                document.querySelector('.employee-info').style.display = 'block';
+            });
+
+            document.getElementById('editForm').addEventListener('submit', async function (event) {
+                event.preventDefault();
+
+                const updatedData = {
+                    FullName: this.name.value,
+                    Department: this.position.value,
+                    Phone: this.phone.value,
+                    Email: this.email.value
+                };
+
+                try {
+                    const response = await fetch(`/api/Home/${employeeId}`, {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json' },
+                        credentials: 'include',
+                        body: JSON.stringify(updatedData),
+                    });
+                    if (!response.ok) throw new Error('Failed to update employee');
+                    const result = await response.json();
+                    alert(result.message);
+
+                    await fetchEmployeeDetails();
+                    document.getElementById('editFormContainer').classList.add('hidden');
+                    document.querySelector('.employee-info').style.display = 'block';
+                } catch (error) {
+                    console.error('Error updating employee:', error);
+                    alert('Có lỗi xảy ra khi cập nhật nhân viên.');
+                }
+            });
+
+            document.getElementById('deleteBtn').addEventListener('click', async () => {
+                const confirmDelete = confirm('Bạn có chắc chắn muốn xoá nhân viên này không?');
+                if (confirmDelete) {
+                    try {
+                        const response = await fetch(`/api/Home/${employeeId}`, { method: 'DELETE', credentials: 'include' });
+                        if (!response.ok) throw new Error('Failed to delete employee');
+                        const result = await response.json();
+                        alert(result.message);
+                        window.location.href = '/staff_page/staff.html';
+                    } catch (error) {
+                        console.error('Error deleting employee:', error);
+                        alert('Có lỗi xảy ra khi xoá nhân viên.');
+                    }
+                }
+            });
+
+            // Sort functionality
+            const sortButton = document.getElementById('sortButton');
+            const sortArrow = document.getElementById('sortArrow');
+            let isAscending = false;
+
+            sortButton.addEventListener('click', async () => {
+                isAscending = !isAscending;
+                sortArrow.setAttribute('data-lucide', isAscending ? 'chevron-up' : 'chevron-down');
+                sortButton.querySelector('span').textContent = isAscending ? 'Cũ nhất' : 'Mới nhất';
+
+                try {
+                    const response = await fetch(`/api/Home/attendance/${employeeId}`, { credentials: 'include' });
+                    if (!response.ok) throw new Error('Failed to fetch attendance history');
+                    let attendanceData = await response.json();
+
+                    // Sort the data
+                    attendanceData.sort((a, b) => {
+                        const dateA = new Date(a.date.split('/').reverse().join('-'));
+                        const dateB = new Date(b.date.split('/').reverse().join('-'));
+                        return isAscending ? dateA - dateB : dateB - dateA;
+                    });
+
+                    renderAttendanceHistory(attendanceData);
+                } catch (error) {
+                    console.error('Error sorting attendance history:', error);
+                    attendanceHistory.innerHTML = '<p>Không có lịch sử ra vào.</p>';
+                }
+            });
+
+            // Logout functionality
+            window.logout = async function () {
+                try {
+                    await fetch('/api/Auth/logout', {
+                        method: 'POST',
+                        credentials: 'include'
+                    });
+                    window.location.href = '/login_page/login.html';
+                } catch (error) {
+                    console.error('Error logging out:', error);
+                    window.location.href = '/login_page/login.html';
+                }
+            };
+
+            // Initialize
+            const isAuthenticated = await fetchUserInfo();
+            if (isAuthenticated) {
+                await fetchEmployeeDetails();
+                await fetchAttendanceHistory();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Access Point - Speed POS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="flex">
+        <!-- Main content -->
+        <main class="flex-1 p-6">
+            <!-- Header -->
+            <div class="bg-white rounded-xl shadow header">
+                <div class="flex items-center justify-between px-6 py-4">
+                    <img src="/images/Logo-SpeedPos.webp" alt="Speed POS" class="h-8">
+                    <!-- Tìm kiếm -->
+                    <input type="text" placeholder="Tìm kiếm..." class="w-1/2 px-4 py-2 border rounded-full shadow-sm" id="search-input">
+                    <!-- Thông tin người dùng -->
+                    <div class="relative group cursor-pointer">
+                        <div class="flex items-center space-x-3">
+                            <img src="/images/images.jpeg" alt="Ảnh admin" class="w-12 h-12 rounded-full object-cover" />
+                            <div class="text-sm">
+                                <div class="font-semibold" id="user-name">Tên admin</div>
+                                <div class="text-gray-500 text-xs" id="user-email">mail admin</div>
+                            </div>
+                        </div>
+                        <!-- Dropdown menu -->
+                        <div class="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition duration-200 z-50">
+                            <a href="/admin_page/admin.html" class="text-center block px-4 py-2 hover:bg-gray-100 text-sm">Xem hồ sơ</a>
+                            <a href="/admin_page/doimatkhau.html" class="text-center block px-4 py-2 hover:bg-gray-100 text-sm">Đổi mật khẩu</a>
+                            <a href="#" onclick="logout()" class="text-center block px-4 py-2 hover:bg-gray-100 text-sm">Đăng xuất</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Content with Sidebar and Access Point Cards -->
+            <div class="flex mt-6">
+                <!-- Sidebar -->
+                <aside class="w-64 bg-white rounded shadow sidebar">
+                    <nav class="px-4 py-2 space-y-2">
+                        <a href="/home_page/index.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                            <span>Trang chủ</span>
+                        </a>
+                        <a href="/staff_page/staff.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                            <span>Nhân viên</span>
+                        </a>
+                        <a href="/building_page/building.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                            <span>Toà nhà</span>
+                        </a>
+                        <a href="/access_point_page/access_point.html" class="flex items-center space-x-2 text-white bg-blue-600 py-2 rounded">
+                            <span>Access Point</span>
+                        </a>
+                        <a href="/access_history_page/access_history.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                            <span>Lịch sử truy cập</span>
+                        </a>
+                    </nav>
+                </aside>
+                <!-- Access Point Cards Container -->
+                <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 ml-4" id="access-point-container">
+                </div>
+            </div>
+            <!-- Refresh Button -->
+            <div class="mt-4 text-center">
+                <button id="refreshBtn" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Làm mới danh sách</button>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            const searchInput = document.querySelector("#search-input");
+            const accessPointContainer = document.querySelector("#access-point-container");
+            const userNameElement = document.querySelector("#user-name");
+            const userEmailElement = document.querySelector("#user-email");
+            const refreshBtn = document.querySelector("#refreshBtn");
+            let accessPoints = [];
+
+            // Fetch user info
+            async function fetchUserInfo() {
+                try {
+                    const response = await fetch('/api/Auth/user', {
+                        credentials: 'include'
+                    });
+                    if (!response.ok) throw new Error("Unauthorized");
+                    const user = await response.json();
+                    const role = user.role?.toString().trim();
+                    if (role !== "admin") {
+                        window.location.href = '/nhanvien_page/home.html';
+                        return false;
+                    }
+                    userNameElement.textContent = user.name || "Tên admin";
+                    userEmailElement.textContent = user.email || "mail admin";
+                    return true;
+                } catch (error) {
+                    console.error('Error fetching user info:', error);
+                    window.location.href = '/login_page/login.html';
+                    return false;
+                }
+            }
+
+            // Fetch access points
+            async function fetchAccessPoints() {
+                try {
+                    const response = await fetch('/api/AccessPoint', {
+                        credentials: 'include'
+                    });
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(errorData.message || "Failed to fetch access points");
+                    }
+                    accessPoints = await response.json();
+                    renderAccessPoints(accessPoints);
+                } catch (error) {
+                    console.error('Error fetching access points:', error);
+                    alert('Không thể tải danh sách Access Point: ' + error.message);
+                }
+            }
+
+            // Render access points
+            function renderAccessPoints(accessPointList) {
+                console.log('Rendering access points:', accessPointList); // Debug log
+                accessPointContainer.innerHTML = '';
+                accessPointList.forEach(ap => {
+                    // Use location as room name, remove "Cổng" if present
+                    let roomName = ap.location || 'Không có tên phòng';
+                    if (roomName.includes('Cổng')) {
+                        roomName = roomName.split('Cổng')[0].trim(); // Remove "Cổng" and anything after
+                    }
+
+                    const statusText = ap.isActive === true ? "Hoạt động" : ap.isActive === false ? "Ngưng hoạt động" : "Bảo trì";
+                    const statusColor = ap.isActive === true ? "text-green-600" : ap.isActive === false ? "text-red-600" : "text-yellow-600";
+
+                    const card = document.createElement('div');
+                    card.classList.add('bg-white', 'p-4', 'rounded', 'shadow', 'employee-card');
+                    card.setAttribute('data-id', ap.accessPointId);
+                    card.innerHTML = `
+                            <div class="flex items-center space-x-3">
+                              <div>
+                                <div class="font-semibold employee-name">${ap.siteName || 'Không có tên'}</div>
+                                <div class="text-sm text-gray-500">Tên phòng: ${roomName}</div>
+                                <div class="text-sm text-gray-500">Khu vực: ${ap.accessName || 'Không có khu vực'}</div>
+                                <div class="text-sm text-gray-500">Loại: ${ap.deviceType || 'Không có loại'}</div>
+                                <div class="text-sm ${statusColor}">
+                                  ${statusText}
+                                </div>
+                              </div>
+                            </div>
+                            <div class="mt-3 flex justify-between text-sm text-gray-600">
+                              <a href="/ap_detail_page/ap_detail.html?id=${ap.accessPointId}" class="hover:text-blue-500">👁️ Xem</a>
+                              <button class="hover:text-red-500 delete-button">🗑️ Xoá</button>
+                            </div>
+                        `;
+                    accessPointContainer.appendChild(card);
+                });
+                attachEventListeners();
+            }
+
+            // Search functionality
+            searchInput.addEventListener("input", () => {
+                const keyword = searchInput.value.toLowerCase();
+                const filteredAccessPoints = accessPoints.filter(ap =>
+                    ap.accessName?.toLowerCase().includes(keyword) || false
+                );
+                renderAccessPoints(filteredAccessPoints);
+            });
+
+            // Attach event listeners for delete buttons
+            function attachEventListeners() {
+                document.querySelectorAll(".delete-button").forEach(button => {
+                    button.addEventListener("click", async () => {
+                        const card = button.closest(".employee-card");
+                        const accessPointId = card.getAttribute('data-id');
+                        const accessPointName = card.querySelector(".employee-name").textContent;
+                        if (confirm(`Bạn có chắc chắn muốn xoá thiết bị "${accessPointName}"?`)) {
+                            try {
+                                const response = await fetch(`/api/AccessPoint/${accessPointId}`, {
+                                    method: 'DELETE',
+                                    credentials: 'include'
+                                });
+                                if (!response.ok) {
+                                    const errorData = await response.json();
+                                    throw new Error(errorData.message || "Failed to delete access point");
+                                }
+                                const result = await response.json();
+                                alert(result.message);
+                                await fetchAccessPoints(); // Re-fetch data after deletion
+                            } catch (error) {
+                                console.error('Error deleting access point:', error);
+                                alert('Lỗi khi xoá: ' + error.message);
+                            }
+                        }
+                    });
+                });
+            }
+
+            // Refresh button functionality
+            refreshBtn.addEventListener("click", async () => {
+                await fetchAccessPoints(); // Re-fetch data on refresh button click
+            });
+
+            // Logout function
+            window.logout = async () => {
+                try {
+                    await fetch('/api/Auth/logout', {
+                        method: 'POST',
+                        credentials: 'include'
+                    });
+                    window.location.href = '/login_page/login.html';
+                } catch (error) {
+                    console.error('Error logging out:', error);
+                    window.location.href = '/login_page/login.html';
+                }
+            };
+
+            // Add event listener for window message to refresh data
+            window.addEventListener("message", (event) => {
+                if (event.data === "refreshAccessPoints") {
+                    fetchAccessPoints();
+                }
+            });
+
+            // Initialize
+            const isAuthenticated = await fetchUserInfo();
+            if (isAuthenticated) {
+                await fetchAccessPoints();
+            }
+        });
+    </script>
+</body>
+</html>

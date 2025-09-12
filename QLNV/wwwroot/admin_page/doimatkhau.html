@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Trang chủ - Speed POS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-gray-100 font-sans">
+  <div class="flex">
+
+    <!-- Main content -->
+    <main class="flex-1 p-6">
+      <!-- Header -->
+      <div class="bg-white rounded-xl shadow header">
+        <div class="flex items-center justify-between px-6 py-4">
+          <img src="/images/Logo-SpeedPos.webp" alt="Speed POS" class="h-8">
+          <input type="text" placeholder="🔍 Tìm kiếm..." class="w-1/2 px-4 py-2 border rounded-full shadow-sm">
+
+          <div class="relative group cursor-pointer">
+            <div class="flex items-center space-x-3">
+              <img src="/images/images.jpeg" alt="Ảnh admin" class="w-12 h-12 rounded-full object-cover" />
+              <div class="text-sm">
+                <div class="font-semibold">Tên admin</div>
+                <div class="text-gray-500 text-xs">mail admin</div>
+              </div>
+            </div>
+
+            <!-- Dropdown menu -->
+            <div class="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition duration-200 z-50">
+              <a href="/admin_page/admin.html" class="text-center  block px-4 py-2 hover:bg-gray-100 text-sm"> Xem hồ sơ</a>
+              <a href="/admin_page/doimatkhau.html" class="text-center block px-4 py-2 hover:bg-gray-100 text-sm font-medium text-blue-600">Đổi mật khẩu</a>
+              <a href="/login_page/login.html" class="text-center  block px-4 py-2 hover:bg-gray-100 text-sm">Đăng xuất</a>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+      <!-- Content with Sidebar and Employee Cards -->
+      <div class="flex mt-6">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white rounded shadow sidebar">
+          <nav class="px-4 py-2 space-y-2">
+            <a href="/home_page/index.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+              <i class="home"></i> <span>Trang chủ</span>
+            </a>
+            <a href="/staff_page/staff.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+              <i class="users"></i> <span>Nhân viên</span>
+            </a>
+            <a href="/building_page/building.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+              <i class="building"></i> <span>Toà nhà</span>
+            </a>
+            <a href="/access_point_page/access_point.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+              <i class="map-pin"></i> <span>Access Point</span>
+            </a>
+            <a href="/access_history_page/access_history.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+              <i class="history"></i> <span>Lịch sử truy cập</span>
+            </a>
+          </nav>
+        </aside>
+
+
+<div class="flex-1 grid grid-cols-1 sm:grid-cols lg:grid-cols gap-4 ml-4">
+
+  <div class="w-full text-center mb-6">
+    <h2 class="text-2xl font-semibold">👋 Xin chào, Admin!</h2>
+            <p class="text-gray-600">Bạn muốn Đổi mật khẩu?</p>
+  </div>
+
+  <!-- Đổi Mật Khẩu -->
+          <section class="bg-white p-6 rounded-xl shadow w-full max-w-2xl mx-auto">
+            <h2 class="text-2xl font-semibold mb-4">Đổi mật khẩu</h2>
+            <form onsubmit="return handlePasswordChange(event)" class="space-y-4">
+              <div>
+                <label class="block text-gray-700 font-medium mb-1">Mật khẩu hiện tại</label>
+                <input type="password" name="old_password" class="w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+              </div>
+              <div>
+                <label class="block text-gray-700 font-medium mb-1">Mật khẩu mới</label>
+                <input type="password" name="new_password" class="w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+              </div>
+              <div>
+                <label class="block text-gray-700 font-medium mb-1">Xác nhận mật khẩu mới</label>
+                <input type="password" name="confirm_password" class="w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+              </div>
+              <button type="submit" class="bg-blue-600 text-white font-medium py-2 px-6 rounded hover:bg-blue-700 transition duration-200">Lưu thay đổi</button>
+            </form>
+          </section>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Script xử lý đổi mật khẩu và chuyển hướng -->
+  <script>
+    function handlePasswordChange(event) {
+      event.preventDefault(); // Ngăn form gửi đi
+
+      // TODO: Thêm kiểm tra mật khẩu nếu cần
+
+      alert("Đổi mật khẩu thành công!");
+      setTimeout(() => {
+        window.location.href = "/home_page/index.html";
+      }, 1000);
+
+      return false;
+    }
+  </script>
+</body>
+</html>

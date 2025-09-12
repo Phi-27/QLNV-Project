@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chi tiết Toà nhà - Speed POS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="flex">
+        <main class="flex-1 p-6">
+            <!-- Header -->
+            <div class="bg-white rounded-xl shadow header">
+                <div class="flex items-center justify-between px-6 py-4">
+                    <img src="/images/Logo-SpeedPos.webp" alt="Speed POS" class="h-8" />
+                    <input type="text"
+                           placeholder="🔍 Tìm kiếm..."
+                           class="w-1/2 px-4 py-2 border rounded-full shadow-sm" />
+                    <div class="relative group cursor-pointer">
+                        <div class="flex items-center space-x-3">
+                            <img src="/images/images.jpeg" alt="Ảnh admin" class="w-12 h-12 rounded-full object-cover" />
+                            <div class="text-sm">
+                                <div class="font-semibold" id="user-name">Tên admin</div>
+                                <div class="text-gray-500 text-xs" id="user-email">mail admin</div>
+                            </div>
+                        </div>
+                        <div class="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition duration-200 z-50">
+                            <a href="/admin_page/admin.html" class="text-center block px-4 py-2 hover:bg-gray-100 text-sm">Xem hồ sơ</a>
+                            <a href="/admin_page/doimatkhau.html" class="text-center block px-4 py-2 hover:bg-gray-100 text-sm">Đổi mật khẩu</a>
+                            <a href="#" onclick="logout()" class="block px-4 py-2 hover:bg-gray-100 text-sm text-center">Đăng xuất</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex mt-6">
+                <aside class="w-64 bg-white rounded shadow sidebar">
+                    <nav class="px-4 py-2 space-y-2">
+                        <a href="/home_page/index.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                            <span>Trang chủ</span>
+                        </a>
+                        <a href="/staff_page/staff.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                            <span>Nhân viên</span>
+                        </a>
+                        <a href="/building_page/building.html" class="flex items-center space-x-2 text-white bg-blue-600 py-2 rounded">
+                            <span>Toà nhà</span>
+                        </a>
+                        <a href="/access_point_page/access_point.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                            <span>Access Point</span>
+                        </a>
+                        <a href="/access_history_page/access_history.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                            <span>Lịch sử truy cập</span>
+                        </a>
+                    </nav>
+                </aside>
+
+                <div class="flex-1 gap-4 ml-4">
+                    <div class="bg-gray-700 text-white rounded-lg p-6 mb-6">
+                        <div class="flex items-center mb-4">
+                            <button onclick="window.history.back()"
+                                    class="w-12 h-12 rounded-full bg-[#255e7c] flex items-center justify-center hover:bg-[#1e4b63] transition">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     class="w-5 h-5 text-white"
+                                     fill="none"
+                                     viewBox="0 0 24 24"
+                                     stroke="currentColor">
+                                    <path stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                          stroke-width="2"
+                                          d="M15 19l-7-7 7-7" />
+                                </svg>
+                            </button>
+                            <h2 class="text-xl font-semibold ml-3">Thông tin Toà nhà</h2>
+                        </div>
+                        <div class="grid grid-cols-1 gap-y-2 text-sm mb-4">
+                            <div class="flex">
+                                <span class="w-32 font-medium">Mã cửa hàng:</span>
+                                <span id="viewSiteId">Loading...</span>
+                            </div>
+                            <div class="flex">
+                                <span class="w-32 font-medium">Tên cửa hàng:</span>
+                                <span id="viewSiteName">Loading...</span>
+                            </div>
+                            <div class="flex">
+                                <span class="w-32 font-medium">Địa chỉ:</span>
+                                <span id="viewAddress">Loading...</span>
+                            </div>
+                            <div class="flex">
+                                <span class="w-32 font-medium">Trạng thái:</span>
+                                <div class="flex items-center space-x-2" id="viewStatus">
+                                    <span class="w-3 h-3 rounded-full bg-gray-500 inline-block"></span>
+                                    <span>Loading...</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="editForm" class="grid grid-cols-1 gap-y-3 text-sm mt-8 border-t pt-6 hidden">
+                            <div class="flex">
+                                <label class="w-32 font-medium">Mã cửa hàng:</label>
+                                <input type="text"
+                                       id="editSiteId"
+                                       class="flex-1 px-3 py-2 rounded text-black"
+                                       readonly />
+                            </div>
+                            <div class="flex">
+                                <label class="w-32 font-medium">Tên cửa hàng:</label>
+                                <input type="text"
+                                       id="editSiteName"
+                                       class="flex-1 px-3 py-2 rounded text-black"
+                                       value="" />
+                            </div>
+                            <div class="flex">
+                                <label class="w-32 font-medium">Địa chỉ:</label>
+                                <input type="text"
+                                       id="editAddress"
+                                       class="flex-1 px-3 py-2 rounded text-black"
+                                       value="" />
+                            </div>
+                            <div class="flex">
+                                <label class="w-32 font-medium">Trạng thái:</label>
+                                <select id="editStatus"
+                                        class="flex-1 px-3 py-2 rounded text-black">
+                                    <option value="true">Hoạt động</option>
+                                    <option value="false">Ngưng hoạt động</option>
+                                </select>
+                            </div>
+                            <div class="mt-4 space-x-2">
+                                <button id="saveBtn"
+                                        class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                                    💾 Lưu
+                                </button>
+                                <button id="cancelBtn"
+                                        class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">
+                                    ❌ Hủy
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="space-x-2 mt-4">
+                            <button id="editBtn" class="hover:text-yellow-500">✏️ Sửa</button>
+                            <button id="deleteBtn" class="hover:text-red-500">🗑️ Xoá</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            lucide.createIcons();
+
+            const editBtn = document.getElementById("editBtn");
+            const deleteBtn = document.getElementById("deleteBtn");
+            const editForm = document.getElementById("editForm");
+            const saveBtn = document.getElementById("saveBtn");
+            const cancelBtn = document.getElementById("cancelBtn");
+
+            async function fetchSiteDetails() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const siteId = urlParams.get("id");
+                if (!siteId) {
+                    alert("Không tìm thấy ID Site.");
+                    window.history.back();
+                    return;
+                }
+
+                try {
+                    const response = await fetch(`http://localhost:33135/api/Site/${siteId}`, {
+                        credentials: "include",
+                        signal: AbortSignal.timeout(5000)
+                    });
+                    if (!response.ok) throw new Error(await response.text());
+                    const site = await response.json();
+                    console.log("Site data:", site);
+
+                    document.getElementById("viewSiteId").textContent = site.siteId || "N/A";
+                    document.getElementById("viewSiteName").textContent = site.siteName || "Chưa có tên";
+                    document.getElementById("viewAddress").textContent = site.address || "Chưa có địa chỉ";
+                    const statusText = site.isActive === true ? "Hoạt động" : site.isActive === false ? "Ngưng hoạt động" : "Bảo trì";
+                    const statusColor = site.isActive === true ? "bg-green-500" : site.isActive === false ? "bg-red-600" : "bg-yellow-500";
+                    document.getElementById("viewStatus").innerHTML = `<span class="w-3 h-3 rounded-full ${statusColor} inline-block"></span><span>${statusText}</span>`;
+
+                    document.getElementById("editSiteId").value = site.siteId || "";
+                    document.getElementById("editSiteName").value = site.siteName || "";
+                    document.getElementById("editAddress").value = site.address || "";
+                    document.getElementById("editStatus").value = site.isActive?.toString() || "false";
+                } catch (error) {
+                    console.error("Error fetching site details:", error);
+                    alert("Lỗi khi tải thông tin: " + error.message);
+                }
+            }
+
+            editBtn.addEventListener("click", () => {
+                editForm.classList.remove("hidden");
+            });
+
+            cancelBtn.addEventListener("click", () => {
+                editForm.classList.add("hidden");
+            });
+
+            saveBtn.addEventListener("click", async () => {
+                const urlParams = new URLSearchParams(window.location.search);
+                const siteId = urlParams.get("id");
+                const updatedData = {
+                    siteId: parseInt(document.getElementById("editSiteId").value),
+                    siteName: document.getElementById("editSiteName").value,
+                    address: document.getElementById("editAddress").value,
+                    isActive: document.getElementById("editStatus").value === "true"
+                };
+
+                try {
+                    const response = await fetch(`http://localhost:33135/api/Site/${siteId}`, {
+                        method: "PUT",
+                        headers: { "Content-Type": "application/json" },
+                        credentials: "include",
+                        body: JSON.stringify(updatedData),
+                        signal: AbortSignal.timeout(5000)
+                    });
+                    if (!response.ok) throw new Error(await response.text());
+                    const result = await response.json();
+                    alert(result.message || "Cập nhật thành công.");
+                    await fetchSiteDetails(); // Refresh details after save
+                    editForm.classList.add("hidden");
+                } catch (error) {
+                    console.error("Error updating site:", error);
+                    alert("Lỗi khi cập nhật: " + error.message);
+                }
+            });
+
+            deleteBtn.addEventListener("click", async () => {
+                if (confirm("Bạn có chắc chắn muốn xoá toà nhà này không?")) {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const siteId = urlParams.get("id");
+                    try {
+                        const response = await fetch(`http://localhost:33135/api/Site/${siteId}`, {
+                            method: "DELETE",
+                            credentials: "include",
+                            signal: AbortSignal.timeout(5000)
+                        });
+                        if (!response.ok) throw new Error(await response.text());
+                        const result = await response.json();
+                        alert(result.message);
+                        window.location.href = "/building_page/building.html";
+                    } catch (error) {
+                        console.error("Error deleting site:", error);
+                        alert("Lỗi khi xoá: " + error.message);
+                    }
+                }
+            });
+
+            await fetchSiteDetails();
+        });
+    </script>
+</body>
+</html>

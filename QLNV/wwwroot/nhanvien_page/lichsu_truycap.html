@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nhân viên - Speed POS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-gray-100 font-sans">
+  <div class="flex">
+
+    <!-- Main content -->
+    <main class="flex-1 p-6">
+      <!-- Header -->
+      <div class="bg-white rounded-xl shadow header">
+        <div class="flex items-center justify-between px-6 py-4">
+          <img src="/images/Logo-SpeedPos.webp" alt="Speed POS" class="h-8">
+          <input type="text" placeholder="🔍 Tìm kiếm..." class="w-1/2 px-4 py-2 border rounded-full shadow-sm">
+
+          <div class="relative group cursor-pointer">
+            <div class="flex items-center space-x-3">
+              <img src="/images/images.jpeg" alt="Ảnh admin" class="w-12 h-12 rounded-full object-cover" />
+              <div class="text-sm">
+                <div class="font-semibold">Tên nhân viên</div>
+                <div class="text-gray-500 text-xs">mail nhân viên</div>
+              </div>
+            </div>
+
+            <!-- Dropdown menu -->
+            <div class="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition duration-200 z-50">
+              <a href="/nhanvien_page/hs_nhanvien.html" class="text-center  block px-4 py-2 hover:bg-gray-100 text-sm"> Xem hồ sơ</a>
+                <a href="/nhanvien_page/doimatkkhau.html" class="text-center  block px-4 py-2 hover:bg-gray-100 text-sm">Đổi mật khẩu</a>
+              <a href="/login_page/login.html" class="text-center  block px-4 py-2 hover:bg-gray-100 text-sm">Đăng xuất</a>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+      <!-- Content with Sidebar and Employee Cards -->
+      <div class="flex mt-6">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white rounded shadow sidebar">
+          <nav class="px-4 py-2 space-y-2">
+            <a href="/nhanvien_page/home.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+              <i class="home"></i> <span>Trang chủ</span>
+            </a>
+            <a href="/nhanvien_page/thongbao.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+              <i class="building"></i> <span>Thông báo</span>
+            </a>
+            <a href="/nhanvien_page/diemtruycap.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+              <i class="map-pin"></i> <span>Access Point</span>
+            </a>
+            <a href="/nhanvien_page/lichsu_truycap.html" class="flex items-center space-x-2 text-white bg-blue-600 py-2 rounded">
+              <i class="history"></i> <span>Lịch sử truy cập</span>
+            </a>
+          </nav>
+        </aside>
+
+<div class="flex-1 grid grid-cols-1 sm:grid-cols lg:grid-cols gap-4 ml-4">
+
+<!-- Lịch sử truy cập -->
+      <div class="bg-white p-6 rounded-xl shadow">
+        <h2 class="text-2xl font-semibold mb-4">Lịch sử truy cập</h2>
+        <div class="overflow-x-auto">
+          <table class="min-w-full table-auto border-collapse border border-gray-200">
+            <thead class="bg-gray-100">
+              <tr>
+                <th class="border border-gray-200 px-4 py-2 text-left">Thời gian</th>
+                <th class="border border-gray-200 px-4 py-2 text-left">Vị trí</th>
+                <th class="border border-gray-200 px-4 py-2 text-left">Thiết bị</th>
+                <th class="border border-gray-200 px-4 py-2 text-left">Trạng thái</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="hover:bg-gray-50">
+                <td class="border border-gray-200 px-4 py-2">20/05/2025 08:00</td>
+                <td class="border border-gray-200 px-4 py-2">Cổng chính - Tòa nhà A</td>
+                <td class="border border-gray-200 px-4 py-2">Máy quét vân tay</td>
+                <td class="border border-gray-200 px-4 py-2 flex items-center text-green-600 font-medium">
+                    <i data-lucide="check-circle" class="w-4 h-4"></i>
+                    <span>Thành công</span>
+                  </td> 
+                        </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="border border-gray-200 px-4 py-2">20/05/2025 17:00</td>
+                <td class="border border-gray-200 px-4 py-2">Cổng chính - Tòa nhà A</td>
+                <td class="border border-gray-200 px-4 py-2">Máy quét vân tay</td>
+                <td class="border border-gray-200 px-4 py-2 flex items-center text-green-600 font-medium">
+                    <i data-lucide="check-circle" class="w-4 h-4"></i>
+                    <span>Thành công</span>
+                  </td>
+                </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="border border-gray-200 px-4 py-2">21/05/2025 08:05</td>
+                <td class="border border-gray-200 px-4 py-2">Cổng phụ - Tòa nhà B</td>
+                <td class="border border-gray-200 px-4 py-2">Thẻ từ</td>
+                <td class="border border-gray-200 px-4 py-2 flex items-center text-red-600 font-medium">
+                    <i data-lucide="x-circle" class="w-4 h-4"></i>
+                    <span>Thất bại</span>
+                  </td>             
+                 </tr>
+      
+    </main>
+  </div>
+      <!-- Script xử lý -->
+    <script>
+
+
+      // Lucide icons init
+      document.addEventListener("DOMContentLoaded", () => {
+        if (window.lucide) {
+          window.lucide.replace();
+        }
+      });
+
+          lucide.createIcons();
+    document.addEventListener("DOMContentLoaded", () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const employeeName = urlParams.get("name");
+      if (employeeName) {
+        document.querySelector(".employee-name").textContent = employeeName;
+      }
+    });
+
+    </script>
+</body>
+</html>

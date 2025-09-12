@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý lịch sử truy cập - Speed POS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="flex">
+        <!-- Main content -->
+        <main class="flex-1 p-6">
+            <!-- Header -->
+            <div class="bg-white rounded-xl shadow header">
+                <div class="flex items-center justify-between px-6 py-4">
+                    <img src="/images/Logo-SpeedPos.webp" alt="Speed POS" class="h-8">
+                    <!-- Tìm kiếm -->
+                    <input type="text" placeholder="Tìm kiếm..." class="w-1/2 px-4 py-2 border rounded-full shadow-sm" id="global-search">
+                    <!-- Thông tin người dùng -->
+                    <div class="relative group cursor-pointer">
+                        <div class="flex items-center space-x-3">
+                            <img src="/images/images.jpeg" alt="Ảnh admin" class="w-12 h-12 rounded-full object-cover" />
+                            <div class="text-sm">
+                                <div class="font-semibold" id="user-name">Tên admin</div>
+                                <div class="text-gray-500 text-xs" id="user-email">mail admin</div>
+                            </div>
+                        </div>
+
+                        <div class="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition duration-200 z-50">
+                            <a href="/admin_page/admin.html" class="text-center block px-4 py-2 hover:bg-gray-100 text-sm font-medium text-blue-600">Xem hồ sơ</a>
+                            <a href="/admin_page/doimatkhau.html" class="text-center block px-4 py-2 hover:bg-gray-100 text-sm">Đổi mật khẩu</a>
+                            <a href="#" onclick="logout()" class="block px-4 py-2 hover:bg-gray-100 text-sm text-center">Đăng xuất</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content with Sidebar and Access History -->
+            <div class="flex mt-6">
+                <!-- Sidebar -->
+                <aside class="w-64 bg-white rounded shadow sidebar">
+                    <nav class="px-4 py-2 space-y-2">
+                        <a href="/home_page/index.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                            <span>Trang chủ</span>
+                        </a>
+                        <a href="/staff_page/staff.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                            <span>Nhân viên</span>
+                        </a>
+                        <a href="/building_page/building.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                            <span>Toà nhà</span>
+                        </a>
+                        <a href="/access_point_page/access_point.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                            <span>Access Point</span>
+                        </a>
+                        <a href="/access_history_page/access_history.html" class="flex items-center space-x-2 text-white bg-blue-600 py-2 rounded">
+                            <span>Lịch sử truy cập</span>
+                        </a>
+                    </nav>
+                </aside>
+
+                <div class="flex-1 gap-4 ml-4">
+                    <!-- Bộ lọc -->
+                    <div class="bg-white p-4 rounded shadow mb-4">
+                        <h2 class="font-semibold mb-3 flex items-center gap-2">
+                            <i data-lucide="filter" class="w-5 h-5 text-gray-600"></i> Bộ lọc
+                        </h2>
+                        <div class="grid grid-cols-6 gap-4 mb-4 items-end">
+                            <!-- Access Point -->
+                            <div class="col-span-1">
+                                <label for="access-point" class="block text-sm text-gray-700 mb-1">Access Point</label>
+                                <input id="access-point" list="access-points" placeholder="VD: Cổng Chính" class="border p-2 rounded w-full">
+                                <datalist id="access-points"></datalist>
+                            </div>
+
+                            <!-- Nhân viên -->
+                            <div class="col-span-1">
+                                <label for="employee" class="block text-sm text-gray-700 mb-1">Nhân viên</label>
+                                <input id="employee" list="employees" placeholder="VD: Nguyễn Văn A" class="border p-2 rounded w-full">
+                                <datalist id="employees"></datalist>
+                            </div>
+
+                            <!-- Từ ngày -->
+                            <div class="col-span-1">
+                                <label for="from-date" class="block text-sm text-gray-700 mb-1">Từ ngày</label>
+                                <input id="from-date" type="date" class="border p-2 rounded w-full">
+                            </div>
+
+                            <!-- Đến ngày -->
+                            <div class="col-span-1">
+                                <label for="to-date" class="block text-sm text-gray-700 mb-1">Đến ngày</label>
+                                <input id="to-date" type="date" class="border p-2 rounded w-full">
+                            </div>
+
+                            <!-- Kết quả -->
+                            <div class="col-span-1">
+                                <label for="result" class="block text-sm text-gray-700 mb-1">Kết quả</label>
+                                <input id="result" list="results" placeholder="VD: Thành công" class="border p-2 rounded w-full">
+                                <datalist id="results"></datalist>
+                            </div>
+
+                            <!-- Nút tìm kiếm -->
+                            <div class="col-span-1">
+                                <button id="btn-search" class="bg-blue-600 text-white px-4 py-2 rounded w-full flex items-center justify-center space-x-1">
+                                    <i data-lucide="search" class="w-4 h-4"></i> <span>Tìm kiếm</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bảng dữ liệu -->
+                    <div class="bg-gray-700 text-white rounded p-4 shadow overflow-x-auto">
+                        <div class="flex items-center mb-4">
+                            <div class="w-2 h-5 bg-blue-500 rounded-sm mr-2"></div>
+                            <h2 class="text-lg font-semibold">Lịch sử truy cập</h2>
+                        </div>
+                        <table id="history-table" class="w-full text-sm text-left">
+                            <thead class="border-b border-gray-400">
+                                <tr>
+                                    <th class="py-2">Nhân viên</th>
+                                    <th>Mã NV</th>
+                                    <th>Access Point</th>
+                                    <th>Thời gian</th>
+                                    <th>Kết quả</th>
+                                </tr>
+                            </thead>
+                            <tbody id="history-table-body">
+                                <!-- Data will be populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Nút Làm mới -->
+                    <div class="flex gap-3 mt-4">
+                        <button id="btn-refresh" class="bg-blue-600 text-white px-4 py-2 rounded flex items-center space-x-1">
+                            <i data-lucide="refresh-ccw" class="w-4 h-4"></i> <span>Làm mới</span>
+                        </button>
+                    </div>
+
+                    <!-- Phân trang -->
+                    <div class="flex justify-center items-center gap-2 mt-4 text-sm" id="pagination-controls">
+                        <!-- Pagination will be populated dynamically -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            lucide.createIcons();
+
+            const userNameElement = document.querySelector("#user-name");
+            const userEmailElement = document.querySelector("#user-email");
+            const accessPointInput = document.getElementById("access-point");
+            const employeeInput = document.getElementById("employee");
+            const fromDateInput = document.getElementById("from-date");
+            const toDateInput = document.getElementById("to-date");
+            const resultInput = document.getElementById("result");
+            const searchBtn = document.getElementById("btn-search");
+            const refreshBtn = document.getElementById("btn-refresh");
+            const tableBody = document.getElementById("history-table-body");
+            const paginationControls = document.getElementById("pagination-controls");
+
+            let currentPage = 1;
+            const pageSize = 10;
+
+            // Fetch user info
+            async function fetchUserInfo() {
+                try {
+                    const response = await fetch('http://localhost:33135/api/Auth/user', {
+                        credentials: 'include',
+                        signal: AbortSignal.timeout(5000)
+                    });
+                    if (!response.ok) {
+                        throw new Error("Không thể xác thực: " + response.status);
+                    }
+                    const user = await response.json();
+                    const role = user.role?.toString().trim();
+                    if (role !== "admin") {
+                        alert("Bạn không có quyền truy cập trang này.");
+                        window.location.href = '/nhanvien_page/home.html';
+                        return false;
+                    }
+                    userNameElement.textContent = user.name || "Tên admin";
+                    userEmailElement.textContent = user.email || "mail admin";
+                    return true;
+                } catch (error) {
+                    console.error('Error fetching user info:', error);
+                    alert('Lỗi xác thực: ' + error.message);
+                    window.location.href = '/login_page/login.html';
+                    return false;
+                }
+            }
+
+            // Fetch filter options
+            async function fetchFilterOptions() {
+                try {
+                    console.log("Attempting to fetch filter options...");
+                    const response = await fetch('http://localhost:33135/api/AccessLog/FilterOptions', {
+                        method: 'GET',
+                        headers: {
+                            'Accept': 'application/json'
+                        },
+                        credentials: 'include'
+                    });
+                    console.log("Filter options response status:", response.status);
+                    if (!response.ok) {
+                        const errorText = await response.text();
+                        throw new Error(`Không thể lấy tùy chọn bộ lọc: ${response.status} - ${errorText}`);
+                    }
+                    const data = await response.json();
+                    console.log("Filter options data:", JSON.stringify(data, null, 2));
+
+                    const accessPointList = document.getElementById("access-points");
+                    accessPointList.innerHTML = (data.accessPoints || []).map(ap => `<option value="${ap}">`).join('');
+
+                    const employeeList = document.getElementById("employees");
+                    employeeList.innerHTML = (data.employees || []).map(emp => `<option value="${emp}">`).join('');
+
+                    const resultList = document.getElementById("results");
+                    resultList.innerHTML = (data.results || []).map(res => `<option value="${res}">`).join('');
+                } catch (error) {
+                    console.error('Error fetching filter options:', error);
+                    alert(`Lỗi khi tải bộ lọc: ${error.message}`);
+                }
+            }
+
+            // Fetch access logs with filters and pagination
+            async function fetchAccessLogs(page = 1) {
+                try {
+                    const accessPoint = accessPointInput.value.trim();
+                    const employee = employeeInput.value.trim();
+                    const fromDate = fromDateInput.value;
+                    const toDate = toDateInput.value;
+                    const result = resultInput.value.trim();
+
+                    const params = new URLSearchParams({
+                        page: page,
+                        pageSize: pageSize
+                    });
+                    if (accessPoint) params.append("accessPoint", accessPoint);
+                    if (employee) params.append("employee", employee);
+                    if (fromDate) params.append("fromDate", fromDate);
+                    if (toDate) params.append("toDate", toDate);
+                    if (result) params.append("result", result);
+
+                    const url = `http://localhost:33135/api/AccessLog?${params.toString()}`;
+                    console.log("Fetching access logs from URL:", url);
+
+                    let response;
+                    try {
+                        response = await fetch(url, {
+                            method: 'GET',
+                            headers: {
+                                'Accept': 'application/json'
+                            },
+                            credentials: 'include'
+                        });
+                    } catch (networkError) {
+                        throw new Error(`Không thể kết nối đến server: ${networkError.message}`);
+                    }
+
+                    console.log("Access logs response status:", response.status);
+                    let data;
+                    try {
+                        const contentType = response.headers.get('content-type');
+                        if (!contentType || !contentType.includes('application/json')) {
+                            const text = await response.text();
+                            throw new Error(`Phản hồi không phải JSON: ${text}`);
+                        }
+                        data = await response.json();
+                        console.log("Access logs data:", JSON.stringify(data, null, 2));
+                    } catch (jsonError) {
+                        throw new Error(`Không thể phân tích JSON: ${jsonError.message}`);
+                    }
+
+                    if (!response.ok) {
+                        throw new Error(data.message || `Lỗi từ server: ${response.status}`);
+                    }
+
+                    if (!data.data || !Array.isArray(data.data)) {
+                        console.warn("No valid data returned from API. Treating as empty result.");
+                        renderAccessLogs([]);
+                        renderPagination(0, page, pageSize);
+                        return;
+                    }
+
+                    renderAccessLogs(data.data);
+                    renderPagination(data.totalCount, data.page, data.pageSize);
+                    currentPage = data.page;
+                } catch (error) {
+                    console.error('Error fetching access logs:', error);
+                    tableBody.innerHTML = `<tr><td colspan="5" class="py-2 text-center">Không thể tải dữ liệu: ${error.message}</td></tr>`;
+                    alert(`Lỗi khi tải dữ liệu: ${error.message}`);
+                }
+            }
+
+            // Render access logs in table
+            function renderAccessLogs(logs) {
+                tableBody.innerHTML = '';
+                console.log("Rendering access logs:", JSON.stringify(logs, null, 2));
+                if (!logs || logs.length === 0) {
+                    tableBody.innerHTML = '<tr><td colspan="5" class="py-2 text-center">Không có dữ liệu.</td></tr>';
+                    return;
+                }
+
+                logs.forEach(log => {
+                    console.log("Processing log entry:", log);
+                    let resultColor = "text-yellow-500";
+                    let resultIcon = "clock";
+                    if (log.accessResult?.toLowerCase() === "thành công") {
+                        resultColor = "text-green-500";
+                        resultIcon = "check-circle";
+                    } else if (log.accessResult?.toLowerCase() === "thất bại") {
+                        resultColor = "text-red-500";
+                        resultIcon = "x-circle";
+                    }
+
+                    const row = document.createElement("tr");
+                    row.classList.add("border-t", "border-gray-500");
+                    row.innerHTML = `
+                            <td class="py-2">${log.fullName || 'N/A'}</td>
+                            <td>${log.employeeCode || 'N/A'}</td>
+                            <td>${log.accessPointName || 'N/A'}</td>
+                            <td>${log.accessTime ? new Date(log.accessTime).toLocaleString('vi-VN') : 'N/A'}</td>
+                            <td class="py-2 px-4 flex items-center space-x-2 ${resultColor}">
+                                <i data-lucide="${resultIcon}" class="w-4 h-4"></i>
+                                <span>${log.accessResult || 'N/A'}</span>
+                            </td>
+                        `;
+                    tableBody.appendChild(row);
+                });
+                lucide.createIcons();
+            }
+
+            // Render pagination controls
+            function renderPagination(totalCount, currentPage, pageSize) {
+                const totalPages = Math.ceil(totalCount / pageSize);
+                paginationControls.innerHTML = '';
+                console.log("Rendering pagination: totalCount=", totalCount, "currentPage=", currentPage, "totalPages=", totalPages);
+
+                const prevButton = document.createElement("button");
+                prevButton.classList.add("text-gray-600", "hover:text-black");
+                prevButton.textContent = "« Trước";
+                prevButton.disabled = currentPage <= 1;
+                prevButton.addEventListener("click", () => fetchAccessLogs(currentPage - 1));
+                paginationControls.appendChild(prevButton);
+
+                for (let i = 1; i <= totalPages; i++) {
+                    const pageButton = document.createElement("button");
+                    pageButton.classList.add("px-3", "py-1", "rounded");
+                    pageButton.textContent = i;
+                    if (i === currentPage) {
+                        pageButton.classList.add("bg-blue-600", "text-white");
+                    } else {
+                        pageButton.classList.add("bg-white", "border");
+                        pageButton.addEventListener("click", () => fetchAccessLogs(i));
+                    }
+                    paginationControls.appendChild(pageButton);
+                }
+
+                const nextButton = document.createElement("button");
+                nextButton.classList.add("text-gray-600", "hover:text-black");
+                nextButton.textContent = "Sau »";
+                nextButton.disabled = currentPage >= totalPages;
+                nextButton.addEventListener("click", () => fetchAccessLogs(currentPage + 1));
+                paginationControls.appendChild(nextButton);
+            }
+
+            // Search button click
+            searchBtn.addEventListener("click", () => {
+                console.log("Search button clicked with values:", {
+                    accessPoint: accessPointInput.value,
+                    employee: employeeInput.value,
+                    fromDate: fromDateInput.value,
+                    toDate: toDateInput.value,
+                    result: resultInput.value
+                });
+                fetchAccessLogs(1);
+            });
+
+            // Refresh button click
+            refreshBtn.addEventListener("click", () => {
+                console.log("Refresh button clicked");
+                accessPointInput.value = '';
+                employeeInput.value = '';
+                fromDateInput.value = '';
+                toDateInput.value = '';
+                resultInput.value = '';
+                fetchAccessLogs(1);
+            });
+
+            // Logout function
+            window.logout = async () => {
+                try {
+                    await fetch('http://localhost:33135/api/Auth/logout', {
+                        method: 'POST',
+                        credentials: 'include'
+                    });
+                    window.location.href = '/login_page/login.html';
+                } catch (error) {
+                    console.error('Error logging out:', error);
+                    window.location.href = '/login_page/login.html';
+                }
+            };
+
+            // Initialize
+            console.log("Initializing page at", new Date().toLocaleString('vi-VN'));
+            const isAuthenticated = await fetchUserInfo();
+            if (isAuthenticated) {
+                fetchFilterOptions().then(() => {
+                    fetchAccessLogs();
+                }).catch(error => console.error("Initialization failed:", error));
+            } else {
+                console.error("User not authenticated. Skipping data fetch.");
+                tableBody.innerHTML = '<tr><td colspan="5" class="py-2 text-center">Vui lòng đăng nhập để xem dữ liệu.</td></tr>';
+            }
+        });
+    </script>
+</body>
+</html>

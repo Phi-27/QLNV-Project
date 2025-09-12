@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nhân viên - Speed POS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-gray-100 font-sans">
+  <div class="flex">
+
+    <!-- Main content -->
+    <main class="flex-1 p-6">
+      <!-- Header -->
+      <div class="bg-white rounded-xl shadow header">
+        <div class="flex items-center justify-between px-6 py-4">
+          <img src="/images/Logo-SpeedPos.webp" alt="Speed POS" class="h-8">
+          <input type="text" placeholder="🔍 Tìm kiếm..." class="w-1/2 px-4 py-2 border rounded-full shadow-sm">
+
+          <div class="relative group cursor-pointer">
+            <div class="flex items-center space-x-3">
+              <img src="/images/images.jpeg" alt="Ảnh admin" class="w-12 h-12 rounded-full object-cover" />
+              <div class="text-sm">
+                <div class="font-semibold">Tên nhân viên</div>
+                <div class="text-gray-500 text-xs">mail nhân viên</div>
+              </div>
+            </div>
+
+            <!-- Dropdown menu -->
+            <div class="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition duration-200 z-50">
+              <a href="/nhanvien_page/hs_nhanvien.html" class="text-center  block px-4 py-2 hover:bg-gray-100 text-sm"> Xem hồ sơ</a>
+              <a href="/nhanvien_page/doimatkkhau.html" class="text-center  block px-4 py-2 hover:bg-gray-100 text-sm">Đổi mật khẩu</a>
+              <a href="/login_page/login.html" class="text-center  block px-4 py-2 hover:bg-gray-100 text-sm">Đăng xuất</a>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+      <!-- Content with Sidebar and Employee Cards -->
+      <div class="flex mt-6">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white rounded shadow sidebar">
+          <nav class="px-4 py-2 space-y-2">
+            <a href="/nhanvien_page/home.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+              <i class="home"></i> <span>Trang chủ</span>
+            </a>
+            <a href="/nhanvien_page/thongbao.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+              <i class="building"></i> <span>Thông báo</span>
+            </a>
+            <a href="/nhanvien_page/diemtruycap.html" class="flex items-center space-x-2 text-white bg-blue-600 py-2 rounded">
+              <i class="map-pin"></i> <span>Điểm đã truy cập</span>
+            </a>
+            <a href="/nhanvien_page/lichsu_truycap.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+              <i class="history"></i> <span>Lịch sử truy cập</span>
+            </a>
+          </nav>
+        </aside>
+
+<div class="flex-1 grid grid-cols-1 sm:grid-cols lg:grid-cols gap-4 ml-4">
+
+       <!-- Access Points Used -->
+      <div class="bg-white rounded-xl shadow p-6">
+        <h1 class="text-2xl font-bold mb-4">Các Access Point đã sử dụng</h1>
+        <div class="overflow-x-auto">
+          <table class="min-w-full table-auto text-sm">
+            <thead>
+              <tr class="bg-gray-100 text-gray-700">
+                <th class="px-4 py-2 text-left"></th>
+                <th class="px-4 py-2 text-left">Tên thiết bị</th>
+                <th class="px-4 py-2 text-left">Vị trí</th>
+                <th class="px-4 py-2 text-left">Thời gian truy cập</th>
+              </tr>
+            </thead>
+            <tbody class="text-gray-800">
+              <tr class="border-t">
+                <td class="px-4 py-2">1</td>
+                <td class="px-4 py-2">AP-Tầng 1</td>
+                <td class="px-4 py-2">Tòa nhà A - Lầu 1</td>
+                <td class="px-4 py-2">12/05/2025 - 08:15</td>
+              </tr>
+              <tr class="border-t">
+                <td class="px-4 py-2">2</td>
+                <td class="px-4 py-2">AP-Phòng họp</td>
+                <td class="px-4 py-2">Tòa nhà B - Phòng 204</td>
+                <td class="px-4 py-2">13/05/2025 - 14:30</td>
+              </tr>
+              <tr class="border-t">
+                <td class="px-4 py-2">3</td>
+                <td class="px-4 py-2">AP-Văn phòng IT</td>
+                <td class="px-4 py-2">Tòa nhà A - Phòng IT</td>
+                <td class="px-4 py-2">14/05/2025 - 09:00</td>
+              </tr>
+
+      
+    </main>
+  </div>
+</body>
+</html>

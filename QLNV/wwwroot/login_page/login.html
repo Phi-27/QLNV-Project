@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng nhập - Speed POS</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <img src="/images/Logo-SpeedPos.webp" alt="Logo" class="logo" />
+            <div class="icons">
+                <span>⭐</span>
+                <span>📍</span>
+                <span>🚚</span>
+                <span>📦</span>
+                <span>👥</span>
+                <span>🌐</span>
+            </div>
+            <div class="clouds"></div>
+        </div>
+        <div class="right">
+            <img src="/images/Logo-SpeedPos.webp" alt="Logo nhỏ" class="logo-small" />
+            <h1>Đăng nhập</h1>
+            <p class="welcome">Chào mừng trở lại. Đăng nhập để bắt đầu làm việc.</p>
+            <hr />
+            <form id="loginForm">
+                <label for="email">Vui lòng nhập</label>
+                <input type="email" id="email" placeholder="Email của bạn" required />
+                <input type="password" id="password" placeholder="Mật khẩu của bạn" required />
+
+                <div class="options">
+                    <div>
+                        <input type="checkbox" id="remember" checked />
+                        <label for="remember">Luôn đăng nhập</label>
+                    </div>
+                    <div class="links">
+                        <a href="#">Quên mật khẩu?</a><br>
+                        <a href="#">Đăng ký</a>
+                    </div>
+                </div>
+
+                <button type="submit">Đăng nhập</button>
+
+                <div class="social-login">
+                    <button class="google"><img src="/images/Google__G__logo.svg.png" alt=""> Đăng nhập bằng Google</button>
+                    <button class="microsoft"><img src="/images/Microsoft_logo.svg.png" alt=""> Đăng nhập bằng Microsoft</button>
+                    <button class="apple"><img src="/images/Apple_logo_black.svg" alt=""> Đăng nhập bằng Apple</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            try {
+                const response = await fetch("/api/Auth/login", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
+                    body: JSON.stringify({ email, password }),
+                    credentials: 'include' // Đảm bảo gửi cookie xác thực
+                });
+
+                const data = await response.json();
+                console.log("Login API response:", data); // Debug response
+
+                if (response.ok) {
+                    // Debug giá trị Role từ API
+                    console.log("Role từ API:", data.role);
+
+                    // Phân quyền dựa trên Role
+                    const role = data.role?.toString().trim().toLowerCase();
+                    if (role === "admin") {
+                        console.log("Redirecting admin to: /home_page/index.html");
+                        window.location.href = "/home_page/index.html"; // Trang admin
+                    } else { // Mặc định là nhân viên nếu không phải admin
+                        console.log("Redirecting to: /nhanvien_page/home.html");
+                        window.location.href = "/nhanvien_page/home.html"; // Trang nhân viên
+                    }
+                } else {
+                    console.error("Login failed:", data.message);
+                    alert("❌ " + (data.message || "Đăng nhập thất bại."));
+                }
+            } catch (error) {
+                console.error("Lỗi đăng nhập:", error.message);
+                alert("Có lỗi xảy ra khi đăng nhập: " + error.message);
+            }
+        });
+    </script>
+</body>
+</html>

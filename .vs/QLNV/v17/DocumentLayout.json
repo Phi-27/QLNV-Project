@@ -1,0 +1,725 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\phich\\source\\repos\\QLNV\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|c:\\users\\phich\\source\\repos\\qlnv\\qlnv\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\controllers\\accesslogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\controllers\\accesslogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\models\\accesslog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\models\\accesslog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\qlnv.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\qlnv.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\controllers\\accesspointcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\controllers\\accesspointcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\wwwroot\\nhanvien_page\\home.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\wwwroot\\nhanvien_page\\home.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\controllers\\sitecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\controllers\\sitecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\dto\\employeerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\dto\\employeerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\dto\\accesspointdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\dto\\accesspointdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\models\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\models\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\dto\\sitedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\dto\\sitedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\dto\\accesslogrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\dto\\accesslogrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\dto\\accesslogdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\dto\\accesslogdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\models\\site.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\models\\site.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\models\\qlnvcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\models\\qlnvcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\models\\accesspoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\models\\accesspoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\migrations\\qlnvcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\migrations\\qlnvcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\migrations\\20250624025609_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\migrations\\20250624025609_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\Migrations\\20250624025258_AddMemberCardToEmployees.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:QLNV\\Migrations\\20250624025258_AddMemberCardToEmployees.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\Migrations\\20250624024258_UpdateMemberCard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:QLNV\\Migrations\\20250624024258_UpdateMemberCard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\Migrations\\20250624014857_AddMemberCardColumn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:QLNV\\Migrations\\20250624014857_AddMemberCardColumn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\wwwroot\\nhanvien_page\\doimatkkhau.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\wwwroot\\nhanvien_page\\doimatkkhau.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\wwwroot\\nhanvien_page\\hs_nhanvien.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\wwwroot\\nhanvien_page\\hs_nhanvien.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\wwwroot\\login_page\\login.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\wwwroot\\login_page\\login.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\wwwroot\\access_history_page\\access_history.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\wwwroot\\access_history_page\\access_history.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\wwwroot\\ap_detail_page\\ap_detail.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\wwwroot\\ap_detail_page\\ap_detail.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\wwwroot\\access_point_page\\access_point.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\wwwroot\\access_point_page\\access_point.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\wwwroot\\staff_page\\staff.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\wwwroot\\staff_page\\staff.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\wwwroot\\building_page\\building.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\wwwroot\\building_page\\building.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\wwwroot\\building_detail_page\\building_detail.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\wwwroot\\building_detail_page\\building_detail.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\wwwroot\\staff_detail_page\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\wwwroot\\staff_detail_page\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\wwwroot\\staff_detail_page\\staff_detail.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\wwwroot\\staff_detail_page\\staff_detail.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\wwwroot\\staff_page\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\wwwroot\\staff_page\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\wwwroot\\home_page\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\wwwroot\\home_page\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\wwwroot\\login_page\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\wwwroot\\login_page\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\wwwroot\\login_page\\script.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\wwwroot\\login_page\\script.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\wwwroot\\nhanvien_page\\diemtruycap.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\wwwroot\\nhanvien_page\\diemtruycap.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\wwwroot\\admin_page\\admin.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\wwwroot\\admin_page\\admin.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|C:\\Users\\phich\\source\\repos\\QLNV\\qlnv\\wwwroot\\building_detail_page\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{9D3FDE0E-4E9C-45A8-99A7-AF89A0D3A7D4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\wwwroot\\building_detail_page\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 10,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "SiteController.cs",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\Controllers\\SiteController.cs",
+              "RelativeDocumentMoniker": "QLNV\\Controllers\\SiteController.cs",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\Controllers\\SiteController.cs",
+              "RelativeToolTip": "QLNV\\Controllers\\SiteController.cs",
+              "ViewState": "AQIAALUAAAAAAAAAAAAAwMwAAABfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-25T10:07:06.41Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AccessPointController.cs",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\Controllers\\AccessPointController.cs",
+              "RelativeDocumentMoniker": "QLNV\\Controllers\\AccessPointController.cs",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\Controllers\\AccessPointController.cs",
+              "RelativeToolTip": "QLNV\\Controllers\\AccessPointController.cs",
+              "ViewState": "AQIAAH8AAAAAAAAAAAAkwDgAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-27T06:54:46.506Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "QLNV.http",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\QLNV.http",
+              "RelativeDocumentMoniker": "QLNV\\QLNV.http",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\QLNV.http",
+              "RelativeToolTip": "QLNV\\QLNV.http",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2025-06-23T08:35:18.69Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AccessLog.cs",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\Models\\AccessLog.cs",
+              "RelativeDocumentMoniker": "QLNV\\Models\\AccessLog.cs",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\Models\\AccessLog.cs",
+              "RelativeToolTip": "QLNV\\Models\\AccessLog.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA8AAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T02:50:32.692Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AccessLogController.cs",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\Controllers\\AccessLogController.cs",
+              "RelativeDocumentMoniker": "QLNV\\Controllers\\AccessLogController.cs",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\Controllers\\AccessLogController.cs",
+              "RelativeToolTip": "QLNV\\Controllers\\AccessLogController.cs",
+              "ViewState": "AQIAADQAAAAAAAAAAAAAAIMAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T04:57:56.856Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "AccessPoint.cs",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\Models\\AccessPoint.cs",
+              "RelativeDocumentMoniker": "QLNV\\Models\\AccessPoint.cs",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\Models\\AccessPoint.cs",
+              "RelativeToolTip": "QLNV\\Models\\AccessPoint.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAuwBYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T02:51:38.484Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "QLNV\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "QLNV\\Controllers\\AuthController.cs",
+              "ViewState": "AQIAAEsAAAAAAAAAAAAQwGAAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-23T08:43:19.815Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "QLNV\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "QLNV\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAANACAAAAAAAAAAA5wOMCAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-23T07:45:54.233Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "home.html",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\nhanvien_page\\home.html",
+              "RelativeDocumentMoniker": "QLNV\\wwwroot\\nhanvien_page\\home.html",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\nhanvien_page\\home.html",
+              "RelativeToolTip": "QLNV\\wwwroot\\nhanvien_page\\home.html",
+              "ViewState": "AQIAADkAAAAAAAAAAAAuwEgAAABaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-05-21T03:03:57.343Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\Program.cs",
+              "RelativeDocumentMoniker": "QLNV\\Program.cs",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\Program.cs",
+              "RelativeToolTip": "QLNV\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACIAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T02:58:21.231Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "SiteDTO.cs",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\DTO\\SiteDTO.cs",
+              "RelativeDocumentMoniker": "QLNV\\DTO\\SiteDTO.cs",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\DTO\\SiteDTO.cs",
+              "RelativeToolTip": "QLNV\\DTO\\SiteDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-27T02:50:04.543Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AccessPointDTO.cs",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\DTO\\AccessPointDTO.cs",
+              "RelativeDocumentMoniker": "QLNV\\DTO\\AccessPointDTO.cs",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\DTO\\AccessPointDTO.cs",
+              "RelativeToolTip": "QLNV\\DTO\\AccessPointDTO.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAmwA4AAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-27T02:50:39.861Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Employee.cs",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\Models\\Employee.cs",
+              "RelativeDocumentMoniker": "QLNV\\Models\\Employee.cs",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\Models\\Employee.cs",
+              "RelativeToolTip": "QLNV\\Models\\Employee.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAmwBsAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T02:50:35.379Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "EmployeeRequest.cs",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\DTO\\EmployeeRequest.cs",
+              "RelativeDocumentMoniker": "QLNV\\DTO\\EmployeeRequest.cs",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\DTO\\EmployeeRequest.cs",
+              "RelativeToolTip": "QLNV\\DTO\\EmployeeRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-27T01:37:13.829Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "AccessLogRequest.cs",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\DTO\\AccessLogRequest.cs",
+              "RelativeDocumentMoniker": "QLNV\\DTO\\AccessLogRequest.cs",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\DTO\\AccessLogRequest.cs",
+              "RelativeToolTip": "QLNV\\DTO\\AccessLogRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-27T01:37:46.752Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AccessLogDTO.cs",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\DTO\\AccessLogDTO.cs",
+              "RelativeDocumentMoniker": "QLNV\\DTO\\AccessLogDTO.cs",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\DTO\\AccessLogDTO.cs",
+              "RelativeToolTip": "QLNV\\DTO\\AccessLogDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T05:01:18.835Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Site.cs",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\Models\\Site.cs",
+              "RelativeDocumentMoniker": "QLNV\\Models\\Site.cs",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\Models\\Site.cs",
+              "RelativeToolTip": "QLNV\\Models\\Site.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T02:51:53.648Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "QlnvContext.cs",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\Models\\QlnvContext.cs",
+              "RelativeDocumentMoniker": "QLNV\\Models\\QlnvContext.cs",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\Models\\QlnvContext.cs",
+              "RelativeToolTip": "QLNV\\Models\\QlnvContext.cs",
+              "ViewState": "AQIAAFMAAAAAAAAAAAAIwHEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T02:50:16.687Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "QlnvContextModelSnapshot.cs",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\Migrations\\QlnvContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "QLNV\\Migrations\\QlnvContextModelSnapshot.cs",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\Migrations\\QlnvContextModelSnapshot.cs",
+              "RelativeToolTip": "QLNV\\Migrations\\QlnvContextModelSnapshot.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAABFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-25T10:06:37.449Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "20250624025609_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\Migrations\\20250624025609_InitialCreate.cs",
+              "RelativeDocumentMoniker": "QLNV\\Migrations\\20250624025609_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\Migrations\\20250624025609_InitialCreate.cs",
+              "RelativeToolTip": "QLNV\\Migrations\\20250624025609_InitialCreate.cs",
+              "ViewState": "AQIAAG8AAAAAAAAAAAAcwIQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-25T10:06:31.721Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\appsettings.json",
+              "RelativeDocumentMoniker": "QLNV\\appsettings.json",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\appsettings.json",
+              "RelativeToolTip": "QLNV\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-21T02:52:25.542Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "WeatherForecastController.cs",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\Controllers\\WeatherForecastController.cs",
+              "RelativeDocumentMoniker": "QLNV\\Controllers\\WeatherForecastController.cs",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\Controllers\\WeatherForecastController.cs",
+              "RelativeToolTip": "QLNV\\Controllers\\WeatherForecastController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-27T07:03:23.481Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "20250624025258_AddMemberCardToEmployees.cs",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\Migrations\\20250624025258_AddMemberCardToEmployees.cs",
+              "RelativeDocumentMoniker": "QLNV\\Migrations\\20250624025258_AddMemberCardToEmployees.cs",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\Migrations\\20250624025258_AddMemberCardToEmployees.cs",
+              "RelativeToolTip": "QLNV\\Migrations\\20250624025258_AddMemberCardToEmployees.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T02:52:58.687Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "20250624024258_UpdateMemberCard.cs",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\Migrations\\20250624024258_UpdateMemberCard.cs",
+              "RelativeDocumentMoniker": "QLNV\\Migrations\\20250624024258_UpdateMemberCard.cs",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\Migrations\\20250624024258_UpdateMemberCard.cs",
+              "RelativeToolTip": "QLNV\\Migrations\\20250624024258_UpdateMemberCard.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T02:42:58.384Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "20250624014857_AddMemberCardColumn.cs",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\Migrations\\20250624014857_AddMemberCardColumn.cs",
+              "RelativeDocumentMoniker": "QLNV\\Migrations\\20250624014857_AddMemberCardColumn.cs",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\Migrations\\20250624014857_AddMemberCardColumn.cs",
+              "RelativeToolTip": "QLNV\\Migrations\\20250624014857_AddMemberCardColumn.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAQwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T01:48:57.815Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "login.html",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\login_page\\login.html",
+              "RelativeDocumentMoniker": "QLNV\\wwwroot\\login_page\\login.html",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\login_page\\login.html",
+              "RelativeToolTip": "QLNV\\wwwroot\\login_page\\login.html",
+              "ViewState": "AQIAAEQAAAAAAAAAAAAuwFAAAABMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-05-21T03:03:51.303Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "access_point.html",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\access_point_page\\access_point.html",
+              "RelativeDocumentMoniker": "QLNV\\wwwroot\\access_point_page\\access_point.html",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\access_point_page\\access_point.html",
+              "RelativeToolTip": "QLNV\\wwwroot\\access_point_page\\access_point.html",
+              "ViewState": "AQIAAMgAAAAAAAAAAAAuwOIAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-05-23T10:17:38.239Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "doimatkkhau.html",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\nhanvien_page\\doimatkkhau.html",
+              "RelativeDocumentMoniker": "QLNV\\wwwroot\\nhanvien_page\\doimatkkhau.html",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\nhanvien_page\\doimatkkhau.html",
+              "RelativeToolTip": "QLNV\\wwwroot\\nhanvien_page\\doimatkkhau.html",
+              "ViewState": "AQIAAHUAAAAAAAAAAAAuwIcAAABDAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-06-13T02:25:34.386Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "hs_nhanvien.html",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\nhanvien_page\\hs_nhanvien.html",
+              "RelativeDocumentMoniker": "QLNV\\wwwroot\\nhanvien_page\\hs_nhanvien.html",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\nhanvien_page\\hs_nhanvien.html",
+              "RelativeToolTip": "QLNV\\wwwroot\\nhanvien_page\\hs_nhanvien.html",
+              "ViewState": "AQIAAAgBAAAAAAAAAAAuwCEBAABfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-05-22T03:52:39.684Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "access_history.html",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\access_history_page\\access_history.html",
+              "RelativeDocumentMoniker": "QLNV\\wwwroot\\access_history_page\\access_history.html",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\access_history_page\\access_history.html",
+              "RelativeToolTip": "QLNV\\wwwroot\\access_history_page\\access_history.html",
+              "ViewState": "AQIAANIAAAAAAAAAAAAAAOwAAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-05-23T10:17:58.871Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "ap_detail.html",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\ap_detail_page\\ap_detail.html",
+              "RelativeDocumentMoniker": "QLNV\\wwwroot\\ap_detail_page\\ap_detail.html",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\ap_detail_page\\ap_detail.html",
+              "RelativeToolTip": "QLNV\\wwwroot\\ap_detail_page\\ap_detail.html",
+              "ViewState": "AQIAALQBAAAAAAAAAAAUwMwBAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-05-30T02:26:09.659Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "staff.html",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\staff_page\\staff.html",
+              "RelativeDocumentMoniker": "QLNV\\wwwroot\\staff_page\\staff.html",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\staff_page\\staff.html",
+              "RelativeToolTip": "QLNV\\wwwroot\\staff_page\\staff.html",
+              "ViewState": "AQIAANkBAAAAAAAAAAAUwPMBAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-05-21T07:48:24.04Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "building_detail.html",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\building_detail_page\\building_detail.html",
+              "RelativeDocumentMoniker": "QLNV\\wwwroot\\building_detail_page\\building_detail.html",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\building_detail_page\\building_detail.html",
+              "RelativeToolTip": "QLNV\\wwwroot\\building_detail_page\\building_detail.html",
+              "ViewState": "AQIAAOIAAAAAAAAAAAAuwOwAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-05-27T02:25:33.874Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "building.html",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\building_page\\building.html",
+              "RelativeDocumentMoniker": "QLNV\\wwwroot\\building_page\\building.html",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\building_page\\building.html",
+              "RelativeToolTip": "QLNV\\wwwroot\\building_page\\building.html",
+              "ViewState": "AQIAAN8AAAAAAAAAAAAuwPAAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-05-23T09:26:34.75Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "style.css",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\staff_detail_page\\style.css",
+              "RelativeDocumentMoniker": "QLNV\\wwwroot\\staff_detail_page\\style.css",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\staff_detail_page\\style.css",
+              "RelativeToolTip": "QLNV\\wwwroot\\staff_detail_page\\style.css",
+              "ViewState": "AQIAADMAAAAAAAAAAAAmwEMAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-06-06T08:53:45.556Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "style.css",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\staff_page\\style.css",
+              "RelativeDocumentMoniker": "QLNV\\wwwroot\\staff_page\\style.css",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\staff_page\\style.css",
+              "RelativeToolTip": "QLNV\\wwwroot\\staff_page\\style.css",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-05-23T08:30:49.913Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\home_page\\index.html",
+              "RelativeDocumentMoniker": "QLNV\\wwwroot\\home_page\\index.html",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\home_page\\index.html",
+              "RelativeToolTip": "QLNV\\wwwroot\\home_page\\index.html",
+              "ViewState": "AQIAAOUAAAAAAAAAAAAuwAIBAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-05-23T08:42:58.071Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "staff_detail.html",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\staff_detail_page\\staff_detail.html",
+              "RelativeDocumentMoniker": "QLNV\\wwwroot\\staff_detail_page\\staff_detail.html",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\staff_detail_page\\staff_detail.html",
+              "RelativeToolTip": "QLNV\\wwwroot\\staff_detail_page\\staff_detail.html",
+              "ViewState": "AQIAAGoBAAAAAAAAAAAuwHsBAAA/AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-05-22T02:03:30.045Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "script.js",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\login_page\\script.js",
+              "RelativeDocumentMoniker": "QLNV\\wwwroot\\login_page\\script.js",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\login_page\\script.js",
+              "RelativeToolTip": "QLNV\\wwwroot\\login_page\\script.js",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-06-06T02:10:35.406Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "style.css",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\login_page\\style.css",
+              "RelativeDocumentMoniker": "QLNV\\wwwroot\\login_page\\style.css",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\login_page\\style.css",
+              "RelativeToolTip": "QLNV\\wwwroot\\login_page\\style.css",
+              "ViewState": "AQIAAJQAAAAAAAAAAAAmwKgAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-05-21T03:33:43.682Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "diemtruycap.html",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\nhanvien_page\\diemtruycap.html",
+              "RelativeDocumentMoniker": "QLNV\\wwwroot\\nhanvien_page\\diemtruycap.html",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\nhanvien_page\\diemtruycap.html",
+              "RelativeToolTip": "QLNV\\wwwroot\\nhanvien_page\\diemtruycap.html",
+              "ViewState": "AQIAAEAAAAAAAAAAAAAuwGEAAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-06-03T03:55:26.056Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "admin.html",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\admin_page\\admin.html",
+              "RelativeDocumentMoniker": "QLNV\\wwwroot\\admin_page\\admin.html",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\admin_page\\admin.html",
+              "RelativeToolTip": "QLNV\\wwwroot\\admin_page\\admin.html",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAB8AAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-05-30T06:24:33.47Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "style.css",
+              "DocumentMoniker": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\building_detail_page\\style.css",
+              "RelativeDocumentMoniker": "QLNV\\wwwroot\\building_detail_page\\style.css",
+              "ToolTip": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\building_detail_page\\style.css",
+              "RelativeToolTip": "QLNV\\wwwroot\\building_detail_page\\style.css",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-05-30T03:31:23.373Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

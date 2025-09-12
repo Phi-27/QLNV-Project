@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chi tiết Access Point - Speed POS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="flex">
+        <!-- Main content -->
+        <main class="flex-1 p-6">
+            <!-- Header -->
+            <div class="bg-white rounded-xl shadow header">
+                <div class="flex items-center justify-between px-6 py-4">
+                    <img src="/images/Logo-SpeedPos.webp" alt="Speed POS" class="h-8" />
+                    <!-- Tìm kiếm -->
+                    <input type="text"
+                           placeholder="🔍 Tìm kiếm..."
+                           class="w-1/2 px-4 py-2 border rounded-full shadow-sm" />
+                    <!-- Thông tin người dùng -->
+                    <div class="relative group cursor-pointer">
+                        <div class="flex items-center space-x-3">
+                            <img src="/images/images.jpeg"
+                                 alt="Ảnh admin"
+                                 class="w-12 h-12 rounded-full object-cover" />
+                            <div class="text-sm">
+                                <div class="font-semibold" id="user-name">Tên admin</div>
+                                <div class="text-gray-500 text-xs" id="user-email">mail admin</div>
+                            </div>
+                        </div>
+                        <!-- Dropdown menu -->
+                        <div class="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition duration-200 z-50">
+                            <a href="/admin_page/admin.html" class="text-center block px-4 py-2 hover:bg-gray-100 text-sm">Xem hồ sơ</a>
+                            <a href="/admin_page/doimatkhau.html" class="text-center block px-4 py-2 hover:bg-gray-100 text-sm">Đổi mật khẩu</a>
+                            <a href="/login_page/login.html" class="block px-4 py-2 hover:bg-gray-100 text-sm text-center">Đăng xuất</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content with Sidebar and Employee Details -->
+            <div class="flex mt-6">
+                <!-- Sidebar -->
+                <aside class="w-64 bg-white rounded shadow sidebar">
+                    <nav class="px-4 py-2 space-y-2">
+                        <a href="/home_page/index.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                            <span>Trang chủ</span>
+                        </a>
+                        <a href="/staff_page/staff.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                            <span>Nhân viên</span>
+                        </a>
+                        <a href="/building_page/building.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                            <span>Toà nhà</span>
+                        </a>
+                        <a href="/access_point_page/access_point.html" class="flex items-center space-x-2 text-white bg-blue-600 py-2 rounded">
+                            <span>Access Point</span>
+                        </a>
+                        <a href="/access_history_page/access_history.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                            <span>Lịch sử truy cập</span>
+                        </a>
+                    </nav>
+                </aside>
+
+                <div class="flex-1 gap-4 ml-4">
+                    <!-- Access Point Details -->
+                    <div class="bg-gray-700 text-white rounded-lg p-6 mb-6">
+                        <!-- Dòng chứa nút quay lại và tiêu đề nằm sát nhau -->
+                        <div class="flex items-center mb-4">
+                            <!-- Nút Quay lại -->
+                            <button onclick="window.history.back()"
+                                    class="w-12 h-12 rounded-full bg-[#255e7c] flex items-center justify-center hover:bg-[#1e4b63] transition">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     class="w-5 h-5 text-white"
+                                     fill="none"
+                                     viewBox="0 0 24 24"
+                                     stroke="currentColor">
+                                    <path stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                          stroke-width="2"
+                                          d="M15 19l-7-7 7-7" />
+                                </svg>
+                            </button>
+
+                            <h2 class="text-xl font-semibold ml-3">Thông tin thiết bị</h2>
+                        </div>
+                        <!-- Nội dung -->
+                        <div class="grid grid-cols-1 gap-y-2 text-sm mb-4">
+                            <div class="flex">
+                                <span class="w-32 font-medium">Tên khu vực:</span>
+                                <span id="viewTenKhuVuc">Loading...</span>
+                            </div>
+                            <div class="flex">
+                                <span class="w-32 font-medium">Mã thiết bị:</span>
+                                <span id="viewMaSite">Loading...</span>
+                            </div>
+                            <div class="flex">
+                                <span class="w-32 font-medium">Tên phòng:</span>
+                                <span id="viewToaNha">Loading...</span>
+                            </div>
+                            <div class="flex">
+                                <span class="w-32 font-medium">Địa chỉ:</span>
+                                <span id="viewAddress">Loading...</span>
+                            </div>
+                            <div class="flex">
+                                <span class="w-32 font-medium">Loại:</span>
+                                <span id="viewSoTang">Loading...</span>
+                            </div>
+                            <div class="flex">
+                                <span class="w-32 font-medium">Trạng thái:</span>
+                                <div class="flex items-center space-x-2" id="viewTrangThai">
+                                    <span class="w-3 h-3 rounded-full bg-gray-500 inline-block"></span>
+                                    <span>Loading...</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Form chỉnh sửa -->
+                        <div id="editForm"
+                             class="grid grid-cols-1 gap-y-3 text-sm mt-8 border-t pt-6 hidden">
+                            <div class="flex">
+                                <label class="w-32 font-medium">Tên khu vực:</label>
+                                <input type="text"
+                                       id="editTenKhuVuc"
+                                       class="flex-1 px-3 py-2 rounded text-black"
+                                       value="" />
+                            </div>
+                            <div class="flex">
+                                <label class="w-32 font-medium">Mã thiết bị:</label>
+                                <input type="text"
+                                       id="editMaSite"
+                                       class="flex-1 px-3 py-2 rounded text-black"
+                                       value="" />
+                            </div>
+                            <div class="flex">
+                                <label class="w-32 font-medium">Tên phòng:</label>
+                                <input type="text"
+                                       id="editToaNha"
+                                       class="flex-1 px-3 py-2 rounded text-black"
+                                       value="" />
+                            </div>
+                            <div class="flex">
+                                <label class="w-32 font-medium">Địa chỉ:</label>
+                                <input type="text"
+                                       id="editAddress"
+                                       class="flex-1 px-3 py-2 rounded text-black"
+                                       value="" />
+                            </div>
+                            <div class="flex">
+                                <label class="w-32 font-medium">Loại:</label>
+                                <input type="text"
+                                       id="editSoTang"
+                                       class="flex-1 px-3 py-2 rounded text-black"
+                                       value="" />
+                            </div>
+                            <div class="flex">
+                                <label class="w-32 font-medium">Trạng thái:</label>
+                                <select id="editTrangThai"
+                                        class="flex-1 px-3 py-2 rounded text-black">
+                                    <option value="true">Hoạt động</option>
+                                    <option value="false">Ngưng hoạt động</option>
+                                </select>
+                            </div>
+                            <div class="mt-4 space-x-2">
+                                <button id="saveBtn"
+                                        class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                                    💾 Lưu
+                                </button>
+                                <button id="cancelBtn"
+                                        class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">
+                                    ❌ Hủy
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Nút sửa xoá -->
+                        <div class="space-x-2 mt-4">
+                            <button id="editBtn" class="hover:text-yellow-500">✏️ Sửa</button>
+                            <button id="deleteBtn" class="hover:text-red-500">🗑️ Xoá</button>
+                        </div>
+                    </div>
+
+                    <!-- DANH SÁCH ACCESS POINT -->
+                    <div class="bg-gray-700 text-white rounded-lg p-6 mb-6">
+                        <!-- Tiêu đề -->
+                        <div class="flex items-center mb-4">
+                            <div class="w-2 h-5 bg-blue-500 rounded-sm mr-2"></div>
+                            <h2 class="text-lg font-semibold">Lịch sử truy cập</h2>
+                        </div>
+
+                        <!-- Bảng danh sách -->
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full text-sm text-left text-white">
+                                <thead class="border-b border-gray-500 text-white">
+                                    <tr>
+                                        <th class="py-2 px-4">Người dùng</th>
+                                        <th class="py-2 px-4">Thời gian</th>
+                                        <th class="py-2 px-4">Trạng thái</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="history-table-body" class="text-white">
+                                    <!-- Data will be populated dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Script xử lý -->
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            lucide.createIcons();
+
+            const editBtn = document.getElementById("editBtn");
+            const deleteBtn = document.getElementById("deleteBtn");
+            const editForm = document.getElementById("editForm");
+            const saveBtn = document.getElementById("saveBtn");
+            const cancelBtn = document.getElementById("cancelBtn");
+            const historyTableBody = document.getElementById("history-table-body");
+
+            // Fetch user info
+            async function fetchUserInfo() {
+                try {
+                    console.log("Fetching user info...");
+                    const response = await fetch('http://localhost:33135/api/Auth/user', {
+                        credentials: 'include',
+                        signal: AbortSignal.timeout(5000) // Timeout 5 seconds
+                    });
+                    console.log("User info response status:", response.status);
+
+                    if (!response.ok) {
+                        throw new Error("Không thể xác thực: " + response.status);
+                    }
+
+                    const user = await response.json();
+                    console.log("User info:", user);
+
+                    const role = user.role?.toString().trim();
+                    if (role !== "admin") {
+                        alert("Bạn không có quyền truy cập trang này.");
+                        window.location.href = '/nhanvien_page/home.html';
+                        return false;
+                    }
+
+                    document.querySelector("#user-name").textContent = user.name || "Tên admin";
+                    document.querySelector("#user-email").textContent = user.email || "mail admin";
+                    return true;
+                } catch (error) {
+                    console.error('Error fetching user info:', error);
+                    alert('Lỗi xác thực: ' + error.message);
+                    window.location.href = '/login_page/login.html';
+                    return false;
+                }
+            }
+
+            // Fetch and display access point details
+            async function fetchAccessPointDetails() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const accessPointId = urlParams.get("id");
+                if (!accessPointId) {
+                    alert("Không tìm thấy ID Access Point.");
+                    window.history.back();
+                    return;
+                }
+
+                try {
+                    console.log("Fetching access point details for ID:", accessPointId);
+                    const response = await fetch(`http://localhost:33135/api/AccessPoint/${accessPointId}`, {
+                        credentials: "include",
+                        signal: AbortSignal.timeout(5000) // Timeout 5 seconds
+                    });
+                    console.log("Access point response status:", response.status);
+
+                    if (!response.ok) {
+                        const errorData = await response.text();
+                        console.error("Error response:", errorData);
+                        throw new Error(`Không thể lấy thông tin Access Point: ${response.status} - ${errorData}`);
+                    }
+
+                    const contentType = response.headers.get("content-type");
+                    if (!contentType || !contentType.includes("application/json")) {
+                        const text = await response.text();
+                        throw new Error(`Phản hồi không phải JSON: ${text}`);
+                    }
+
+                    const accessPoint = await response.json();
+                    console.log("Access Point data:", accessPoint);
+
+                    if (!accessPoint || Object.keys(accessPoint).length === 0) {
+                        throw new Error("Dữ liệu Access Point rỗng.");
+                    }
+
+                    document.getElementById("viewTenKhuVuc").textContent = accessPoint.siteName || "Không có tên khu vực";
+                    document.getElementById("viewMaSite").textContent = accessPoint.accessName || "Không có mã thiết bị";
+                    document.getElementById("viewToaNha").textContent = accessPoint.location?.split("Cổng")[0].trim() || "Không có tên phòng";
+                    document.getElementById("viewAddress").textContent = accessPoint.address || "Không có địa chỉ";
+                    document.getElementById("viewSoTang").textContent = accessPoint.deviceType || "Không có loại";
+
+                    const statusText = accessPoint.isActive ? "Hoạt động" : "Ngưng hoạt động";
+                    const statusColor = accessPoint.isActive ? "bg-green-500" : "bg-red-600";
+                    document.getElementById("viewTrangThai").innerHTML = `<span class="w-3 h-3 rounded-full ${statusColor} inline-block"></span><span>${statusText}</span>`;
+
+                    document.getElementById("editTenKhuVuc").value = accessPoint.siteName || "";
+                    document.getElementById("editMaSite").value = accessPoint.accessName || "";
+                    document.getElementById("editToaNha").value = accessPoint.location?.split("Cổng")[0].trim() || "";
+                    document.getElementById("editAddress").value = accessPoint.address || "";
+                    document.getElementById("editSoTang").value = accessPoint.deviceType || "";
+                    document.getElementById("editTrangThai").value = accessPoint.isActive.toString();
+
+                    await fetchAccessLogs(accessPointId);
+                } catch (error) {
+                    console.error("Error fetching access point details:", error);
+                    alert("Lỗi khi tải thông tin thiết bị: " + error.message);
+                }
+            }
+
+            // Fetch access logs
+            async function fetchAccessLogs(accessPointId) {
+                try {
+                    console.log("Fetching access logs for Access Point ID:", accessPointId);
+                    const response = await fetch(`http://localhost:33135/api/AccessLog?accessPointId=${accessPointId}`, {
+                        credentials: "include",
+                        signal: AbortSignal.timeout(5000) // Timeout 5 seconds
+                    });
+                    console.log("Access logs response status:", response.status);
+
+                    if (!response.ok) {
+                        const errorData = await response.text();
+                        console.error("Error response:", errorData);
+                        throw new Error(`Không thể lấy lịch sử truy cập: ${response.status} - ${errorData}`);
+                    }
+
+                    const contentType = response.headers.get("content-type");
+                    if (!contentType || !contentType.includes("application/json")) {
+                        const text = await response.text();
+                        throw new Error(`Phản hồi không phải JSON: ${text}`);
+                    }
+
+                    const logs = await response.json();
+                    console.log("Access logs data:", logs);
+
+                    historyTableBody.innerHTML = "";
+                    if (!logs.data || logs.data.length === 0) {
+                        historyTableBody.innerHTML = '<tr><td colspan="3" class="py-2 px-4 text-center">Không có lịch sử truy cập.</td></tr>';
+                        return;
+                    }
+
+                    const filteredLogs = logs.data.filter(log => log.accessPointId === parseInt(accessPointId));
+                    console.log("Filtered logs for ID", accessPointId + ":", filteredLogs);
+
+                    if (filteredLogs.length === 0) {
+                        historyTableBody.innerHTML = '<tr><td colspan="3" class="py-2 px-4 text-center">Không có lịch sử truy cập cho Access Point này.</td></tr>';
+                        return;
+                    }
+
+                    filteredLogs.forEach(log => {
+                        const row = document.createElement("tr");
+                        row.classList.add("border-t", "border-gray-600");
+                        row.innerHTML = `
+                  <td class="py-2 px-4">${log.fullName || "Không có tên"}</td>
+                  <td class="py-2 px-4">${new Date(log.accessTime).toLocaleString("vi-VN") || "Không có thời gian"}</td>
+                  <td class="py-2 px-4 flex items-center space-x-2 ${log.accessResult.toLowerCase() === "thành công" ? "text-green-600" : "text-red-600"}">
+                    <i data-lucide="${log.accessResult.toLowerCase() === "thành công" ? "check-circle" : "x-circle"}" class="w-4 h-4"></i>
+                    <span>${log.accessResult || "Không rõ"}</span>
+                  </td>
+                `;
+                        historyTableBody.appendChild(row);
+                    });
+                    lucide.createIcons();
+                } catch (error) {
+                    console.error("Error fetching access logs:", error);
+                    historyTableBody.innerHTML = '<tr><td colspan="3" class="py-2 px-4 text-center">Lỗi khi tải lịch sử: ' + error.message + '</td></tr>';
+                }
+            }
+
+            // Edit button
+            editBtn.addEventListener("click", () => {
+                editForm.classList.remove("hidden");
+            });
+
+            // Cancel button
+            cancelBtn.addEventListener("click", () => {
+                editForm.classList.add("hidden");
+            });
+
+            // Save button
+            saveBtn.addEventListener("click", async () => {
+                const urlParams = new URLSearchParams(window.location.search);
+                const accessPointId = urlParams.get("id");
+                const updatedData = {
+                    AccessName: document.getElementById("editMaSite").value,
+                    Location: document.getElementById("editToaNha").value + (document.getElementById("editMaSite").value.includes("Cổng") ? "" : " Cổng " + document.getElementById("editMaSite").value),
+                    DeviceType: document.getElementById("editSoTang").value,
+                    DeviceData: null, // Không có input cho DeviceData, giữ nguyên giá trị cũ nếu cần
+                    IsActive: document.getElementById("editTrangThai").value === "true",
+                    SiteName: document.getElementById("editTenKhuVuc").value,
+                    Address: document.getElementById("editAddress").value
+                };
+
+                try {
+                    console.log("Saving updated access point:", updatedData);
+                    const response = await fetch(`http://localhost:33135/api/AccessPoint/${accessPointId}`, {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        credentials: "include",
+                        body: JSON.stringify(updatedData),
+                        signal: AbortSignal.timeout(5000) // Timeout 5 seconds
+                    });
+                    console.log("Save response status:", response.status);
+
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(errorData.message || "Không thể cập nhật Access Point");
+                    }
+
+                    const result = await response.json();
+                    alert(result.message || "Cập nhật thành công.");
+                    await fetchAccessPointDetails(); // Refresh details
+                    editForm.classList.add("hidden");
+                } catch (error) {
+                    console.error("Error updating access point:", error);
+                    alert("Lỗi khi cập nhật: " + error.message);
+                }
+            });
+
+            // Delete button
+            deleteBtn.addEventListener("click", async () => {
+                if (confirm("Bạn có chắc chắn muốn xoá thiết bị này không?")) {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const accessPointId = urlParams.get("id");
+                    try {
+                        console.log("Deleting access point ID:", accessPointId);
+                        const response = await fetch(`http://localhost:33135/api/AccessPoint/${accessPointId}`, {
+                            method: "DELETE",
+                            credentials: "include",
+                            signal: AbortSignal.timeout(5000) // Timeout 5 seconds
+                        });
+                        console.log("Delete response status:", response.status);
+
+                        if (!response.ok) {
+                            const errorData = await response.json();
+                            throw new Error(errorData.message || "Không thể xoá Access Point");
+                        }
+
+                        const result = await response.json();
+                        alert(result.message);
+                        window.location.href = "/access_point_page/access_point.html";
+                    } catch (error) {
+                        console.error("Error deleting access point:", error);
+                        alert("Lỗi khi xoá: " + error.message);
+                    }
+                }
+            });
+
+            // Initialize
+            const isAuthenticated = await fetchUserInfo();
+            if (isAuthenticated) {
+                await fetchAccessPointDetails();
+            }
+        });
+    </script>
+</body>
+</html>

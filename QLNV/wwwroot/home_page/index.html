@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản lý - Speed POS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Arial', 'Helvetica', 'sans-serif', 'Times New Roman', 'Segoe UI';
+        }
+    </style>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="flex">
+        <main class="flex-1 p-6">
+            <div class="bg-white rounded-xl shadow header">
+                <div class="flex items-center justify-between px-6 py-4">
+                    <img src="/images/Logo-SpeedPos.webp" alt="Speed POS" class="h-8">
+                    <input type="text" placeholder="🔍 Tìm kiếm..." class="w-1/2 px-4 py-2 border rounded-full shadow-sm">
+                    <div class="relative group cursor-pointer">
+                        <div class="flex items-center space-x-3">
+                            <img src="/images/images.jpeg" alt="Ảnh admin" class="w-12 h-12 rounded-full object-cover" />
+                            <div class="text-sm">
+                                <div class="font-semibold" id="user-name">Tên admin</div>
+                                <div class="text-gray-500 text-xs" id="user-email">mail admin</div>
+                            </div>
+                        </div>
+                        <div class="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition duration-200 z-50">
+                            <a href="/admin_page/admin.html" class="text-center block px-4 py-2 hover:bg-gray-100 text-sm">Xem hồ sơ</a>
+                            <a href="/admin_page/doimatkhau.html" class="text-center block px-4 py-2 hover:bg-gray-100 text-sm">Đổi mật khẩu</a>
+                            <a href="#" onclick="logout()" class="block px-4 py-2 hover:bg-gray-100 text-sm text-center">Đăng xuất</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex mt-6">
+                <aside class="w-64 bg-white rounded shadow sidebar">
+                    <nav class="px-4 py-2 space-y-2">
+                        <a href="/home_page/index.html" class="flex items-center space-x-2 text-white bg-blue-600 py-2 rounded">
+                            <i class="home"></i> <span>Trang chủ</span>
+                        </a>
+                        <a href="/staff_page/staff.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                            <i class="users"></i> <span>Nhân viên</span>
+                        </a>
+                        <a href="/building_page/building.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                            <i class="building"></i> <span>Toà nhà</span>
+                        </a>
+                        <a href="/access_point_page/access_point.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                            <i class="map-pin"></i> <span>Access Point</span>
+                        </a>
+                        <a href="/access_history_page/access_history.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                            <i class="history"></i> <span>Lịch sử truy cập</span>
+                        </a>
+                    </nav>
+                </aside>
+                <div class="flex-1 grid grid-cols-1 sm:grid-cols lg:grid-cols gap-4 ml-4">
+                    <div class="w-full text-center mb-6">
+                        <h2 class="text-2xl font-semibold">👋 Xin chào, Admin!</h2>
+                        <p class="text-gray-600">Chúc bạn một ngày làm việc hiệu quả.</p>
+                    </div>
+                    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="statistics-container">
+                        <div class="bg-white p-6 rounded-xl shadow text-center">
+                            <div class="text-xl font-bold text-blue-600" id="employee-count">0</div>
+                            <div class="text-gray-600 mt-2">Nhân viên</div>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow text-center">
+                            <div class="text-xl font-bold text-green-600" id="site-count">0</div>
+                            <div class="text-gray-600 mt-2">Toà nhà</div>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow text-center">
+                            <div class="text-xl font-bold text-yellow-600" id="access-point-count">0</div>
+                            <div class="text-gray-600 mt-2">Access Point</div>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow text-center">
+                            <div class="text-xl font-bold text-red-600" id="access-today-count">0</div>
+                            <div class="text-gray-600 mt-2">Lượt truy cập hôm nay</div>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow text-center">
+                            <div class="text-xl font-bold text-green-500" id="successful-access-count">0</div>
+                            <div class="text-gray-600 mt-2">Truy cập thành công</div>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow text-center">
+                            <div class="text-xl font-bold text-red-500" id="failed-access-count">0</div>
+                            <div class="text-gray-600 mt-2">Thất bại</div>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <h3 class="text-xl font-semibold mb-4">Lịch sử truy cập hôm nay</h3>
+                        <div class="bg-white p-6 rounded-xl shadow">
+                            <table class="w-full text-left">
+                                <thead>
+                                    <tr class="border-b">
+                                        <th class="py-2">Nhân viên</th>
+                                        <th class="py-2">Điểm truy cập</th>
+                                        <th class="py-2">Thời gian</th>
+                                        <th class="py-2">Kết quả</th>
+                                        <th class="py-2">Trạng thái</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="recent-access-logs">
+                                    <!-- Logs will be dynamically inserted here -->
+                                </tbody>
+                            </table>
+                            <!-- Pagination controls -->
+                            <div class="flex justify-center items-center gap-2 mt-4 text-sm" id="pagination-controls">
+                                <!-- Pagination will be populated dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', async function () {
+            const userNameElement = document.querySelector('#user-name');
+            const userEmailElement = document.querySelector('#user-email');
+            const employeeCountElement = document.querySelector('#employee-count');
+            const siteCountElement = document.querySelector('#site-count');
+            const accessPointCountElement = document.querySelector('#access-point-count');
+            const accessTodayCountElement = document.querySelector('#access-today-count');
+            const successfulAccessCountElement = document.querySelector('#successful-access-count');
+            const failedAccessCountElement = document.querySelector('#failed-access-count');
+            const recentAccessLogsElement = document.querySelector('#recent-access-logs');
+            const paginationControls = document.querySelector('#pagination-controls');
+
+            let currentPage = 1;
+            const pageSize = 10;
+
+            async function fetchUserInfo() {
+                try {
+                    const response = await fetch('/api/Auth/user', { credentials: "include" });
+                    if (!response.ok) {
+                        window.location.href = '/login_page/login.html';
+                        return false;
+                    }
+                    const user = await response.json();
+                    console.log('User data:', user);
+                    const role = user.role?.toString().trim();
+                    console.log("Role từ API (index.html):", role);
+                    if (role !== "admin") {
+                        window.location.href = '/nhanvien_page/home.html';
+                        return false;
+                    }
+                    userNameElement.textContent = user.name;
+                    userEmailElement.textContent = user.email;
+                    return true;
+                } catch (error) {
+                    console.error('Error fetching user info:', error);
+                    window.location.href = '/login_page/login.html';
+                    return false;
+                }
+            }
+
+            async function fetchStatistics(page = 1) {
+                console.log('Fetching statistics for page:', page);
+                try {
+                    const response = await fetch(`/api/Home/statistics?page=${page}&pageSize=${pageSize}&timestamp=${new Date().getTime()}`, { credentials: "include" });
+                    console.log('Response status:', response.status);
+
+                    if (!response.ok) {
+                        const errorText = await response.text();
+                        console.error('Error response:', errorText);
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const stats = await response.json();
+                    console.log('Statistics data:', stats);
+
+                    document.getElementById('employee-count').textContent = stats.employeeCount ?? 0;
+                    document.getElementById('site-count').textContent = stats.siteCount ?? 0;
+                    document.getElementById('access-point-count').textContent = stats.accessPointCount ?? 0;
+                    document.getElementById('access-today-count').textContent = stats.accessTodayCount ?? 0;
+                    document.getElementById('successful-access-count').textContent = stats.successfulAccessCount ?? 0;
+                    document.getElementById('failed-access-count').textContent = stats.failedAccessCount ?? 0;
+
+                    renderRecentAccessLogs(stats.recentAccessLogs.data || []);
+                    renderPagination(stats.recentAccessLogs.totalCount, stats.recentAccessLogs.page, stats.recentAccessLogs.pageSize);
+                    currentPage = stats.recentAccessLogs.page;
+                } catch (error) {
+                    console.error('Error in fetchStatistics:', error);
+                }
+            }
+
+            function renderRecentAccessLogs(logs) {
+                recentAccessLogsElement.innerHTML = '';
+                if (logs && logs.length > 0) {
+                    logs.forEach(log => {
+                        const row = document.createElement('tr');
+                        row.classList.add('border-b');
+                        const isSuccess = log.accessResult.toLowerCase().trim() === "thành công";
+                        row.innerHTML = `
+                                <td class="py-2">${log.employeeName || log.fullName}</td>
+                                <td class="py-2">${log.accessPointName}</td>
+                                <td class="py-2">${log.accessTime}</td>
+                                <td class="py-2 ${isSuccess ? 'text-green-600' : 'text-red-600'}">${log.accessResult}</td>
+                                <td class="py-2">${log.accessStatus}</td>
+                            `;
+                        recentAccessLogsElement.appendChild(row);
+                    });
+                } else {
+                    recentAccessLogsElement.innerHTML = '<tr><td colspan="5" class="py-2 text-center">Không có dữ liệu truy cập hôm nay.</td></tr>';
+                }
+            }
+
+            function renderPagination(totalCount, currentPage, pageSize) {
+                const totalPages = Math.ceil(totalCount / pageSize);
+                paginationControls.innerHTML = '';
+                console.log("Rendering pagination: totalCount=", totalCount, "currentPage=", currentPage, "totalPages=", totalPages);
+
+                const prevButton = document.createElement("button");
+                prevButton.classList.add("text-gray-600", "hover:text-black");
+                prevButton.textContent = "« Trước";
+                prevButton.disabled = currentPage <= 1;
+                prevButton.addEventListener("click", () => fetchStatistics(currentPage - 1));
+                paginationControls.appendChild(prevButton);
+
+                for (let i = 1; i <= totalPages; i++) {
+                    const pageButton = document.createElement("button");
+                    pageButton.classList.add("px-3", "py-1", "rounded");
+                    pageButton.textContent = i;
+                    if (i === currentPage) {
+                        pageButton.classList.add("bg-blue-600", "text-white");
+                    } else {
+                        pageButton.classList.add("bg-white", "border");
+                        pageButton.addEventListener("click", () => fetchStatistics(i));
+                    }
+                    paginationControls.appendChild(pageButton);
+                }
+
+                const nextButton = document.createElement("button");
+                nextButton.classList.add("text-gray-600", "hover:text-black");
+                nextButton.textContent = "Sau »";
+                nextButton.disabled = currentPage >= totalPages;
+                nextButton.addEventListener("click", () => fetchStatistics(currentPage + 1));
+                paginationControls.appendChild(nextButton);
+            }
+
+            async function logout() {
+                try {
+                    await fetch('/api/Auth/logout', { method: 'POST', credentials: "include" });
+                    window.location.href = '/login_page/login.html';
+                } catch (error) {
+                    console.error('Error logging out:', error);
+                    window.location.href = '/login_page/login.html';
+                }
+            }
+
+            const isAuthenticated = await fetchUserInfo();
+            if (isAuthenticated) {
+                fetchStatistics();
+            } else {
+                recentAccessLogsElement.innerHTML = '<tr><td colspan="5" class="py-2 text-center">Vui lòng đăng nhập để xem dữ liệu.</td></tr>';
+            }
+            window.logout = logout;
+        });
+    </script>
+</body>
+</html>

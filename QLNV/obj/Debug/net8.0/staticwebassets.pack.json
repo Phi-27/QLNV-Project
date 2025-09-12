@@ -1,0 +1,145 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\access_history_page\\access_history.html",
+      "PackagePath": "staticwebassets\\access_history_page\\access_history.html"
+    },
+    {
+      "Id": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\access_point_page\\access_point.html",
+      "PackagePath": "staticwebassets\\access_point_page\\access_point.html"
+    },
+    {
+      "Id": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\access_point_page\\style.css",
+      "PackagePath": "staticwebassets\\access_point_page\\style.css"
+    },
+    {
+      "Id": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\admin_page\\admin.html",
+      "PackagePath": "staticwebassets\\admin_page\\admin.html"
+    },
+    {
+      "Id": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\admin_page\\doimatkhau.html",
+      "PackagePath": "staticwebassets\\admin_page\\doimatkhau.html"
+    },
+    {
+      "Id": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\ap_detail_page\\ap_detail.html",
+      "PackagePath": "staticwebassets\\ap_detail_page\\ap_detail.html"
+    },
+    {
+      "Id": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\building_detail_page\\building_detail.html",
+      "PackagePath": "staticwebassets\\building_detail_page\\building_detail.html"
+    },
+    {
+      "Id": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\building_detail_page\\style.css",
+      "PackagePath": "staticwebassets\\building_detail_page\\style.css"
+    },
+    {
+      "Id": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\building_page\\building.html",
+      "PackagePath": "staticwebassets\\building_page\\building.html"
+    },
+    {
+      "Id": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\building_page\\style.css",
+      "PackagePath": "staticwebassets\\building_page\\style.css"
+    },
+    {
+      "Id": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\home_page\\index.html",
+      "PackagePath": "staticwebassets\\home_page\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\images\\Apple_logo_black.svg",
+      "PackagePath": "staticwebassets\\images\\Apple_logo_black.svg"
+    },
+    {
+      "Id": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\images\\Google__G__logo.svg.png",
+      "PackagePath": "staticwebassets\\images\\Google__G__logo.svg.png"
+    },
+    {
+      "Id": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\images\\Logo-SpeedPos.webp",
+      "PackagePath": "staticwebassets\\images\\Logo-SpeedPos.webp"
+    },
+    {
+      "Id": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\images\\Microsoft_logo.svg.png",
+      "PackagePath": "staticwebassets\\images\\Microsoft_logo.svg.png"
+    },
+    {
+      "Id": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\images\\anh-mo-ta.jpeg",
+      "PackagePath": "staticwebassets\\images\\anh-mo-ta.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\images\\images.jpeg",
+      "PackagePath": "staticwebassets\\images\\images.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\login_page\\login.html",
+      "PackagePath": "staticwebassets\\login_page\\login.html"
+    },
+    {
+      "Id": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\login_page\\script.js",
+      "PackagePath": "staticwebassets\\login_page\\script.js"
+    },
+    {
+      "Id": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\login_page\\style.css",
+      "PackagePath": "staticwebassets\\login_page\\style.css"
+    },
+    {
+      "Id": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\nhanvien_page\\diemtruycap.html",
+      "PackagePath": "staticwebassets\\nhanvien_page\\diemtruycap.html"
+    },
+    {
+      "Id": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\nhanvien_page\\doimatkkhau.html",
+      "PackagePath": "staticwebassets\\nhanvien_page\\doimatkkhau.html"
+    },
+    {
+      "Id": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\nhanvien_page\\home.html",
+      "PackagePath": "staticwebassets\\nhanvien_page\\home.html"
+    },
+    {
+      "Id": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\nhanvien_page\\hs_nhanvien.html",
+      "PackagePath": "staticwebassets\\nhanvien_page\\hs_nhanvien.html"
+    },
+    {
+      "Id": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\nhanvien_page\\lichsu_truycap.html",
+      "PackagePath": "staticwebassets\\nhanvien_page\\lichsu_truycap.html"
+    },
+    {
+      "Id": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\nhanvien_page\\thongbao.html",
+      "PackagePath": "staticwebassets\\nhanvien_page\\thongbao.html"
+    },
+    {
+      "Id": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\staff_detail_page\\staff_detail.html",
+      "PackagePath": "staticwebassets\\staff_detail_page\\staff_detail.html"
+    },
+    {
+      "Id": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\staff_detail_page\\style.css",
+      "PackagePath": "staticwebassets\\staff_detail_page\\style.css"
+    },
+    {
+      "Id": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\staff_page\\scrip.js",
+      "PackagePath": "staticwebassets\\staff_page\\scrip.js"
+    },
+    {
+      "Id": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\staff_page\\staff.html",
+      "PackagePath": "staticwebassets\\staff_page\\staff.html"
+    },
+    {
+      "Id": "C:\\Users\\phich\\source\\repos\\QLNV\\QLNV\\wwwroot\\staff_page\\style.css",
+      "PackagePath": "staticwebassets\\staff_page\\style.css"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.QLNV.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.QLNV.props",
+      "PackagePath": "build\\QLNV.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.QLNV.props",
+      "PackagePath": "buildMultiTargeting\\QLNV.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.QLNV.props",
+      "PackagePath": "buildTransitive\\QLNV.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

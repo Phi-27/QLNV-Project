@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nhân viên - Speed POS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="flex">
+        <!-- Main content -->
+        <main class="flex-1 p-6">
+            <!-- Header -->
+            <div class="bg-white rounded-xl shadow header">
+                <div class="flex items-center justify-between px-6 py-4">
+                    <img src="/images/Logo-SpeedPos.webp" alt="Speed POS" class="h-8">
+                    <input type="text" placeholder="🔍 Tìm kiếm..." class="w-1/2 px-4 py-2 border rounded-lg shadow-sm">
+                    <div class="relative group cursor-pointer">
+                        <div class="flex items-center space-x-3">
+                            <img src="/images/avatar.jpg" alt="Ảnh nhân viên" class="w-12 h-12 rounded-full object-cover" />
+                            <div class="text-sm">
+                                <div class="font-semibold" id="user-name">Tên nhân viên</div>
+                                <div class="text-gray-500 text-xs" id="user-email">mail nhân viên</div>
+                            </div>
+                        </div>
+                        <div class="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition duration-200 z-50">
+                            <a href="/nhanvien_page/hs_nhanvien.html" class="text-center block px-4 py-2 hover:bg-gray-100 text-sm">Xem hồ sơ</a>
+                            <a href="/nhanvien_page/doimatkhau.html" class="text-center block px-4 py-2 hover:bg-gray-100 text-sm">Đổi mật khẩu</a>
+                            <a href="#" onclick="logout()" class="text-center block px-4 py-2 hover:bg-gray-100 text-sm">Đăng xuất</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content with Sidebar -->
+            <div class="flex mt-6">
+                <!-- Sidebar -->
+                <aside class="w-64 bg-white rounded shadow sidebar">
+                    <nav class="px-4 py-2 space-y-2">
+                        <a href="/nhanvien_page/home.html" class="flex items-center space-x-2 text-white bg-blue-600 py-2 rounded">
+                            <i class="fas fa-home"></i> <span>Trang chủ</span>
+                        </a>
+                        <a href="/nhanvien_page/thongbao.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                            <i class="fas fa-bell"></i> <span>Thông báo</span>
+                        </a>
+                        <a href="/nhanvien_page/diemtruycap.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                            <i class="fas fa-map-pin"></i> <span>Access Point</span>
+                        </a>
+                        <a href="/nhanvien_page/lichsu_truycap.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                            <i class="fas fa-history"></i> <span>Lịch sử truy cập</span>
+                        </a>
+                    </nav>
+                </aside>
+
+                <!-- Main dashboard -->
+                <div class="flex-1 ml-4 grid grid-cols-1 gap-4">
+                    <div class="w-full text-center mb-6">
+                        <h2 class="text-2xl font-semibold">👋 Xin chào, <span id="welcome-name">Nguyễn Văn A</span>!</h2>
+                        <p class="text-gray-600">Chúc bạn một ngày làm việc hiệu quả.</p>
+                    </div>
+
+                    <section class="bg-white p-6 rounded-lg shadow flex items-center space-x-6">
+                        <img src="/images/avatar.jpg" alt="Ảnh đại diện" class="w-24 h-24 rounded-full object-cover">
+                        <div>
+                            <p><strong>Tên:</strong> <span id="profile-name">Nguyễn Văn A</span></p>
+                            <p><strong>Mã nhân viên:</strong> <span id="profile-code">NV001</span></p>
+                            <p><strong>Phòng ban:</strong> <span id="profile-department">Kỹ thuật</span></p>
+                        </div>
+                    </section>
+
+                    <section class="bg-white p-6 rounded-lg shadow">
+                        <h2 class="text-lg font-semibold mb-4">Lịch sử truy cập gần đây</h2>
+                        <ul class="space-y-2 text-sm" id="access-logs">
+                            <li class="flex justify-between">
+                                <span>▸ Cổng Chính</span>
+                                <span>08:00 20/05/2025</span>
+                                <span class="text-green-600">Thành công</span>
+                            </li>
+                        </ul>
+                        <a href="/nhanvien_page/lichsu_truycap.html" class="text-sm text-blue-600 hover:underline mt-3 inline-block">Xem tất cả lịch sử</a>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const userNameElement = document.querySelector('#user-name');
+            const userEmailElement = document.querySelector('#user-email');
+            const welcomeNameElement = document.querySelector('#welcome-name');
+            const profileNameElement = document.querySelector('#profile-name');
+            const profileCodeElement = document.querySelector('#profile-code');
+            const profileDepartmentElement = document.querySelector('#profile-department');
+            const accessLogsList = document.querySelector('#access-logs');
+
+            async function fetchHomeData() {
+                try {
+                    console.log('Fetching data from /api/employee/home...');
+                    const response = await fetch('/api/employee/home', {
+                        method: 'GET',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        credentials: 'include'
+                    });
+
+                    console.log('Response status:', response.status);
+                    if (!response.ok) {
+                        const errorText = await response.text();
+                        console.error('API /api/employee/home failed:', response.status, response.statusText, errorText);
+                        if (response.status === 401 || response.status === 403) {
+                            alert('Phiên đăng nhập hết hạn. Vui lòng đăng nhập lại.');
+                            window.location.href = '/login_page/login.html';
+                            return;
+                        }
+                        throw new Error(`HTTP error: ${response.status} - ${errorText}`);
+                    }
+
+                    const data = await response.json();
+                    console.log('Employee home API response:', data);
+
+                    userNameElement.textContent = data.employee?.fullName || 'N/A';
+                    userEmailElement.textContent = data.employee?.email || 'N/A';
+                    welcomeNameElement.textContent = data.employee?.fullName || 'N/A';
+                    profileNameElement.textContent = data.employee?.fullName || 'N/A';
+                    profileCodeElement.textContent = data.employee?.employeeCode || 'N/A';
+                    profileDepartmentElement.textContent = data.employee?.department || 'N/A';
+
+                    accessLogsList.innerHTML = data.recentAccessLogs && data.recentAccessLogs.length > 0
+                        ? data.recentAccessLogs.map(log => `
+                                <li class="flex justify-between">
+                                    <span>▸ ${log.accessPointName || 'Không xác định'}</span>
+                                    <span>${log.accessTime || 'Không có dữ liệu'}</span>
+                                    <span class="${log.accessResult === 'Thành công' ? 'text-green-600' : 'text-red-600'}">
+                                        ${log.accessResult || 'Không xác định'}
+                                    </span>
+                                </li>
+                            `).join('')
+                        : '<li class="text-gray-500">Không có dữ liệu truy cập.</li>';
+                } catch (error) {
+                    console.error('Error fetching home data:', error.message, error.stack);
+                    alert('Lỗi khi tải dữ liệu. Vui lòng thử lại hoặc liên hệ quản trị viên. Chi tiết: ' + error.message);
+                }
+            }
+
+            async function logout() {
+                try {
+                    await fetch('/api/auth/logout', {
+                        method: 'POST',
+                        credentials: 'include'
+                    });
+                    console.log('Logout successful, redirecting to /login_page/login.html');
+                    window.location.href = '/login_page/login.html';
+                } catch (error) {
+                    console.error('Error logging out:', error);
+                    window.location.href = '/login_page/login.html';
+                }
+            }
+            fetchHomeData();
+            window.logout = logout;
+        });
+    </script>
+</body>
+</html>

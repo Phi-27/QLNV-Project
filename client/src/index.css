@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Arial', 'Helvetica', 'sans-serif', 'Times New Roman', 'Segoe UI';
+  background-color: #f0f0f0; /* hoặc bg-gray-100 */
+}

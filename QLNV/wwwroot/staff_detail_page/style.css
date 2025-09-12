@@ -1,0 +1,84 @@
+/* Custom styles to enhance Tailwind */
+header {
+  padding: 0;
+}
+
+header .flex {
+  padding: 1rem 1.5rem;
+}
+
+.employee-card {
+  transition: transform 0.2s;
+}
+
+.employee-card:hover {
+  transform: translateY(-5px);
+}
+
+.sidebar {
+  transition: all 0.3s ease;
+}
+
+.sidebar a {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar a:hover {
+  background-color: #e0f2fe;
+}
+
+#sortButton {
+  transition: all 0.3s ease;
+}
+
+#sortButton:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .flex-col.lg\\:flex-row {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  .flex-1 {
+    width: 100%;
+    margin-left: 0;
+  }
+  header .flex {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  header input {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .grid-cols-5 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .grid-cols-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .grid-cols-3 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  #sortButton {
+    padding: 0.5rem 1rem;
+  }
+  #sortButton span {
+    font-size: 0.875rem;
+  }
+  #sortButton i {
+    width: 1rem;
+    height: 1rem;
+  }
+}

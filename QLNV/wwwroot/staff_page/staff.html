@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý nhân viên - Speed POS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+    <style>
+        body {
+            font-family: 'Roboto', 'Segoe UI', 'Arial', 'Verdana', 'Helvetica', sans-serif;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+            position: relative;
+            min-height: 500px;
+            box-sizing: border-box;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+            z-index: 1001;
+        }
+
+        .close-modal:hover {
+            color: #000;
+        }
+
+        .modal-content form .flex {
+            position: sticky;
+            bottom: 0;
+            background: white;
+            padding-top: 10px;
+            z-index: 10;
+        }
+
+        .password-wrapper {
+            position: relative;
+        }
+
+        .password-wrapper input {
+            padding-right: 2.5rem;
+            /* Disable browser's default password toggle */
+            -webkit-text-security: disc; /* For WebKit browsers */
+        }
+
+        .password-wrapper .toggle-password {
+            position: absolute;
+            right: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #666;
+            display: none; /* Hide by default */
+        }
+
+        .password-wrapper .toggle-password.visible {
+            display: block; /* Show when password is not empty */
+        }
+
+        .password-wrapper .toggle-password:hover {
+            color: #000;
+        }
+
+        /* Hide browser's default password toggle */
+        input[type="password"]::-ms-reveal,
+        input[type="password"]::-ms-clear {
+            display: none;
+        }
+    </style>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="flex">
+        <main class="flex-1 p-6">
+            <div class="bg-white rounded-xl shadow header">
+                <div class="flex items-center justify-between px-6 py-2">
+                    <img src="/images/Logo-SpeedPos.webp" alt="Speed POS" class="h-8">
+                    <div class="flex items-center space-x-4">
+                        <input type="text" placeholder="Tìm kiếm..." class="w-1/2 px-4 py-2 border rounded-full shadow-sm" id="search-input">
+                        <button id="add-employee-btn" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Thêm nhân viên</button>
+                    </div>
+                    <div class="relative group cursor-pointer">
+                        <div class="flex items-center space-x-3">
+                            <img src="/images/images.jpeg" alt="Ảnh admin" class="w-12 h-12 rounded-full object-cover" id="user-image" />
+                            <div class="text-sm">
+                                <div class="font-semibold" id="user-name">Tên admin</div>
+                                <div class="text-gray-500 text-xs" id="user-email">mail admin</div>
+                            </div>
+                        </div>
+                        <div class="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition duration-200 z-50">
+                            <a href="/admin_page/admin.html" class="text-center block px-4 py-2 hover:bg-gray-100 text-sm">Xem hồ sơ</a>
+                            <a href="/admin_page/doimatkhau.html" class="text-center block px-4 py-2 hover:bg-gray-100 text-sm">Đổi mật khẩu</a>
+                            <a href="#" onclick="logout()" class="block px-4 py-2 hover:bg-gray-100 text-sm text-center">Đăng xuất</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex mt-6">
+                <aside class="w-64 bg-white rounded shadow sidebar">
+                    <nav class="px-4 py-2 space-y-2">
+                        <a href="/home_page/index.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                            <span>Trang chủ</span>
+                        </a>
+                        <a href="/staff_page/staff.html" class="flex items-center space-x-2 text-white bg-blue-600 py-2 rounded">
+                            <span>Nhân viên</span>
+                        </a>
+                        <a href="/building_page/building.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                            <span>Toà nhà</span>
+                        </a>
+                        <a href="/access_point_page/access_point.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                            <span>Access Point</span>
+                        </a>
+                        <a href="/access_history_page/access_history.html" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                            <span>Lịch sử truy cập</span>
+                        </a>
+                    </nav>
+                </aside>
+
+                <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 ml-4" id="employee-container">
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Employee Modal -->
+    <div id="employee-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">×</span>
+            <h2 id="modal-title" class="text-xl font-semibold mb-4"></h2>
+            <form id="employee-form">
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700">Tên nhân viên</label>
+                    <input type="text" id="fullName" class="w-full px-3 py-2 border rounded-lg" required>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700">Mã nhân viên</label>
+                    <input type="text" id="employeeCode" class="w-full px-3 py-2 border rounded-lg" readonly>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700">Chức vụ</label>
+                    <select id="department" class="w-full px-3 py-2 border rounded-lg" required>
+                        <option value="">Chọn chức vụ</option>
+                        <option value="Kỹ thuật">Kỹ thuật</option>
+                        <option value="Kế toán">Kế toán</option>
+                        <option value="Giám đốc">Giám đốc</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Kho">Kho</option>
+                    </select>
+                </div>
+                <!-- Hidden AccessPointId field -->
+                <input type="hidden" id="accessPointId">
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700">Email</label>
+                    <input type="email" id="email" class="w-full px-3 py-2 border rounded-lg" required>
+                </div>
+                <div class="mb-4 password-wrapper">
+                    <label class="block text-sm font-medium text-gray-700">Mật khẩu</label>
+                    <input type="password" id="password" class="w-full px-3 py-2 border rounded-lg" required autocomplete="new-password">
+                    <span class="toggle-password" onclick="togglePasswordVisibility()">
+                        <i class="fas fa-eye"></i>
+                    </span>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700">Số điện thoại</label>
+                    <input type="text" id="phone" class="w-full px-3 py-2 border rounded-lg" required>
+                </div>
+                <div class="flex justify-end space-x-2">
+                    <button type="button" id="cancel-btn" class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400">Hủy</button>
+                    <button type="submit" id="save-btn" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Lưu</button>
+                </div>
+            </form>
+            <input type="hidden" id="employee-id">
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            const searchInput = document.querySelector("#search-input");
+            const employeeContainer = document.querySelector("#employee-container");
+            const userNameElement = document.querySelector("#user-name");
+            const userEmailElement = document.querySelector("#user-email");
+            const employeeModal = document.getElementById("employee-modal");
+            const modalTitle = document.getElementById("modal-title");
+            const employeeForm = document.getElementById("employee-form");
+            const fullNameInput = document.getElementById("fullName");
+            const employeeCodeInput = document.getElementById("employeeCode");
+            const departmentSelect = document.getElementById("department");
+            const accessPointIdInput = document.getElementById("accessPointId");
+            const emailInput = document.getElementById("email");
+            const passwordInput = document.getElementById("password");
+            const phoneInput = document.getElementById("phone");
+            const employeeIdInput = document.getElementById("employee-id");
+            const addEmployeeBtn = document.getElementById("add-employee-btn");
+            const cancelBtn = document.getElementById("cancel-btn");
+            const togglePasswordBtn = document.querySelector(".toggle-password");
+            let employees = [];
+            let accessPoints = [];
+
+            async function fetchUserInfo() {
+                try {
+                    const response = await fetch('/api/Auth/user', {
+                        credentials: 'include'
+                    });
+                    if (!response.ok) throw new Error("Unauthorized");
+                    const user = await response.json();
+                    const role = user.role?.toString().trim();
+                    if (role !== "admin") {
+                        window.location.href = '/nhanvien_page/home.html';
+                        return false;
+                    }
+                    userNameElement.textContent = user.name || "Tên admin";
+                    userEmailElement.textContent = user.email || "mail admin";
+                    return true;
+                } catch (error) {
+                    console.error('Error fetching user info:', error);
+                    window.location.href = '/login_page/login.html';
+                    return false;
+                }
+            }
+
+            async function fetchEmployees() {
+                try {
+                    const response = await fetch('/api/Home', {
+                        credentials: 'include'
+                    });
+                    if (!response.ok) throw new Error("Failed to fetch employees");
+                    employees = await response.json();
+                    renderEmployees(employees);
+                } catch (error) {
+                    console.error('Error fetching employees:', error);
+                    alert('Không thể tải danh sách nhân viên: ' + error.message);
+                }
+            }
+
+            
+
+            function renderEmployees(employeeList) {
+                employeeContainer.innerHTML = '';
+                employeeList.forEach(employee => {
+                    const card = document.createElement('div');
+                    card.classList.add('bg-white', 'p-4', 'rounded', 'shadow', 'employee-card');
+                    card.setAttribute('data-id', employee.employeeId);
+                    const statusColor = employee.isActive ? (employee.latestCheckInStatus === "Trễ giờ" ? "text-yellow-600" : "text-green-600") : "text-red-600";
+                    const statusText = employee.isActive ? employee.latestCheckInStatus : "Vắng mặt";
+
+                    card.innerHTML = `
+                            <div class="flex items-center space-x-3">
+                                <img src="https://randomuser.me/api/portraits/men/${employee.employeeId % 100}.jpg" class="w-12 h-12 rounded-full" alt="${employee.fullName}">
+                                <div>
+                                    <div class="font-semibold employee-name">${employee.fullName || 'Không có tên'}</div>
+                                    <div class="text-sm text-gray-500">Chức vụ: ${employee.department || 'Không có'}</div>
+                                    <div class="text-sm text-gray-500 flex items-center">
+                                        📞: ${employee.phone || 'Không có số điện thoại'}
+                                    </div>
+                                    <div class="text-sm ${statusColor}">
+                                        ${statusText}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-3 flex justify-between text-sm text-gray-600">
+                                <a href="/staff_detail_page/staff_detail.html?id=${employee.employeeId}" class="hover:text-blue-500">👁️ Xem</a>
+                                <button class="hover:text-blue-500 edit-button">✏️ Sửa</button>
+                                <button class="hover:text-red-500 delete-button">🗑️ Xoá</button>
+                            </div>
+                        `;
+                    employeeContainer.appendChild(card);
+                });
+                attachEventListeners();
+            }
+
+            function updateAccessPoint() {
+                const departmentToAccessPoint = {
+                    "Kỹ thuật": 1,
+                    "Kế toán": 2,
+                    "Kho": 3,
+                    "Marketing": 4,
+                    "Giám đốc": 5
+                };
+                const selectedDepartment = departmentSelect.value;
+                const accessPointId = departmentToAccessPoint[selectedDepartment] || null;
+                accessPointIdInput.value = accessPointId || '';
+            }
+
+            function generateEmployeeCode() {
+                const departmentPrefixes = {
+                    "Kỹ thuật": "KTN",
+                    "Kế toán": "KT",
+                    "Giám đốc": "GD",
+                    "Marketing": "MKT",
+                    "Kho": "KHO"
+                };
+
+                const selectedDepartment = departmentSelect.value;
+                const prefix = departmentPrefixes[selectedDepartment] || "NV";
+
+                // Filter employees with the same prefix
+                const existingCodes = employees
+                    .filter(emp => emp.employeeCode?.startsWith(prefix))
+                    .map(emp => emp.employeeCode);
+
+                let number = 1;
+                let newCode;
+                do {
+                    newCode = `${prefix}${String(number).padStart(3, '0')}`; // e.g., KTN001, KT002, GD003
+                    number++;
+                } while (existingCodes.includes(newCode));
+
+                employeeCodeInput.value = newCode;
+            }
+
+            searchInput.addEventListener("input", () => {
+                const keyword = searchInput.value.toLowerCase();
+                const filteredEmployees = employees.filter(employee =>
+                    employee.fullName?.toLowerCase().includes(keyword) || false
+                );
+                renderEmployees(filteredEmployees);
+            });
+
+            function attachEventListeners() {
+                document.querySelectorAll(".delete-button").forEach(button => {
+                    button.addEventListener("click", async () => {
+                        const card = button.closest(".employee-card");
+                        const employeeId = card.getAttribute('data-id');
+                        const employeeName = card.querySelector(".employee-name").textContent;
+                        if (confirm(`Bạn có chắc chắn muốn xoá nhân viên "${employeeName}"?`)) {
+                            try {
+                                const response = await fetch(`/api/Home/${employeeId}`, {
+                                    method: 'DELETE',
+                                    credentials: 'include'
+                                });
+                                if (!response.ok) throw new Error(await response.text());
+                                const result = await response.json();
+                                alert(result.message);
+                                await fetchEmployees();
+                            } catch (error) {
+                                console.error('Error deleting employee:', error);
+                                alert('Lỗi khi xoá: ' + error.message);
+                            }
+                        }
+                    });
+                });
+
+                document.querySelectorAll(".edit-button").forEach(button => {
+                    button.addEventListener("click", () => {
+                        const card = button.closest(".employee-card");
+                        const employeeId = card.getAttribute('data-id');
+                        const employee = employees.find(emp => emp.employeeId === parseInt(employeeId));
+                        openModal('Sửa nhân viên', employee);
+                    });
+                });
+            }
+
+            function openModal(title, employee = null) {
+                modalTitle.textContent = title;
+                employeeIdInput.value = employee ? employee.employeeId : '';
+                fullNameInput.value = employee ? employee.fullName || '' : '';
+                departmentSelect.value = employee ? employee.department || '' : '';
+                employeeCodeInput.value = employee ? employee.employeeCode || '' : '';
+                emailInput.value = employee ? employee.email || '' : '';
+                passwordInput.value = employee ? employee.password || '' : '';
+                phoneInput.value = employee ? employee.phone || '' : '';
+                employeeModal.style.display = "block";
+                updateAccessPoint();
+                updateEyeIconVisibility();
+
+                // If adding a new employee, generate the code after selecting a department
+                if (!employee) {
+                    employeeCodeInput.value = ''; // Reset code for new employee
+                    if (departmentSelect.value) {
+                        generateEmployeeCode();
+                    }
+                }
+            }
+
+            function closeModal() {
+                employeeModal.style.display = "none";
+                employeeForm.reset();
+                passwordInput.type = "password";
+                const toggleIcon = document.querySelector('.toggle-password i');
+                toggleIcon.className = 'fas fa-eye';
+                togglePasswordBtn.classList.remove('visible');
+            }
+
+            cancelBtn.addEventListener("click", closeModal);
+
+            employeeForm.addEventListener("submit", async (e) => {
+                e.preventDefault();
+                const employeeData = {
+                    FullName: fullNameInput.value.trim(),
+                    EmployeeCode: employeeCodeInput.value,
+                    Department: departmentSelect.value,
+                    Role: "Nhân viên",
+                    AccessPointId: parseInt(accessPointIdInput.value) || null,
+                    Email: emailInput.value.trim(),
+                    Password: passwordInput.value.trim(),
+                    Phone: phoneInput.value.trim(),
+                    IsActive: true
+                };
+                const url = employeeIdInput.value ? `/api/Home/${employeeIdInput.value}` : '/api/Home';
+                const method = employeeIdInput.value ? 'PUT' : 'POST';
+
+                try {
+                    const response = await fetch(url, {
+                        method: method,
+                        headers: { 'Content-Type': 'application/json' },
+                        credentials: 'include',
+                        body: JSON.stringify(employeeData)
+                    });
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(errorData.message);
+                    }
+                    const result = await response.json();
+                    alert(result.message);
+                    closeModal();
+                    await fetchEmployees();
+                } catch (error) {
+                    console.error('Error saving employee:', error);
+                    alert('Lỗi khi lưu: ' + error.message);
+                }
+            });
+
+            addEmployeeBtn.addEventListener("click", () => openModal('Thêm nhân viên'));
+
+            window.logout = async () => {
+                try {
+                    await fetch('/api/Auth/logout', {
+                        method: 'POST',
+                        credentials: 'include'
+                    });
+                    window.location.href = '/login_page/login.html';
+                } catch (error) {
+                    console.error('Error logging out:', error);
+                    window.location.href = '/login_page/login.html';
+                }
+            };
+
+            employeeModal.addEventListener("click", (e) => {
+                if (e.target === employeeModal) closeModal();
+            });
+
+            document.querySelector('.close-modal').addEventListener('click', closeModal);
+
+            function togglePasswordVisibility() {
+                const toggleIcon = document.querySelector('.toggle-password i');
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    toggleIcon.className = 'fas fa-eye-slash';
+                } else {
+                    passwordInput.type = 'password';
+                    toggleIcon.className = 'fas fa-eye';
+                }
+            }
+
+            function updateEyeIconVisibility() {
+                if (passwordInput.value.trim() !== '') {
+                    togglePasswordBtn.classList.add('visible');
+                } else {
+                    togglePasswordBtn.classList.remove('visible');
+                }
+            }
+
+            passwordInput.addEventListener("input", updateEyeIconVisibility);
+
+            // Generate EmployeeCode when department changes
+            departmentSelect.addEventListener("change", () => {
+                updateAccessPoint();
+                if (!employeeIdInput.value) { // Only generate code for new employees
+                    generateEmployeeCode();
+                }
+            });
+
+            const isAuthenticated = await fetchUserInfo();
+            if (isAuthenticated) {
+                await fetchEmployees();
+                await fetchAccessPoints();
+            }
+        });
+    </script>
+</body>
+</html>
